@@ -1,0 +1,84 @@
+{
+  "projects": [
+    {
+      "id": 0,
+      "title": "Modernizing a Subscription Management Platform",
+      "subtitle": "With a user-centered approach, the goal was to create an intuitive interface for effortless financial management while incorporating gamification.",
+      "category": "UX/UI Design",
+      "url": "https://example.com/subscription-platform",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop",
+      "additionalContent": [
+        {
+          "type": "text",
+          "content": "<p class=\"mb-4\">This project focused on transforming a complex subscription management system into an intuitive, user-friendly platform. The redesign prioritized clarity and ease of use while maintaining powerful functionality for managing multiple subscriptions.</p><p class=\"mb-4\">Key challenges included simplifying the billing cycle management, creating clear visualizations of subscription costs, and implementing gamification elements to encourage user engagement.</p>"
+        },
+        {
+          "type": "image",
+          "src": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop",
+          "alt": "Subscription Platform Dashboard View"
+        },
+        {
+          "type": "image-text",
+          "src": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&h=600&fit=crop",
+          "alt": "Subscription Management Features",
+          "content": "<p class=\"mb-4\">The dashboard provides users with a comprehensive overview of all their subscriptions at a glance. Users can quickly see upcoming renewals, total monthly costs, and easily manage their subscriptions.</p><p class=\"mb-4\">The gamification elements include achievement badges for maintaining subscriptions, cost-saving milestones, and personalized recommendations based on usage patterns.</p>"
+        },
+        {
+          "type": "text",
+          "content": "<h3 class=\"text-xl font-semibold mb-3\">Key Features</h3><ul class=\"list-disc list-inside space-y-2 mb-4\"><li>Intuitive subscription overview dashboard</li><li>Automated renewal reminders and notifications</li><li>Cost analysis and budgeting tools</li><li>Gamification elements for user engagement</li><li>Mobile-responsive design for on-the-go management</li></ul>"
+        },
+        {
+          "type": "image",
+          "src": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=600&fit=crop",
+          "alt": "Mobile View of Subscription Platform"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "EmpowerPWD Platform",
+      "subtitle": "A comprehensive platform designed to empower people with disabilities through accessible technology and inclusive design.",
+      "category": "Web Development",
+      "url": "https://example.com/empowerpwd",
+      "image": "",
+      "additionalContent": []
+    },
+    {
+      "id": 2,
+      "title": "E-Commerce Redesign",
+      "subtitle": "Redesigned an e-commerce platform with focus on user experience, conversion optimization, and modern design principles.",
+      "category": "UX/UI Design",
+      "url": "https://example.com/ecommerce",
+      "image": "",
+      "additionalContent": []
+    },
+    {
+      "id": 3,
+      "title": "Food Delivery App",
+      "subtitle": "A food delivery app with a focus on user experience, conversion optimization, and modern design principles.",
+      "category": "UX/UI Design",
+      "url": "https://example.com/food-delivery-app",
+      "image": "",
+      "additionalContent": []
+    },
+    {
+      "id": 4,
+      "title": "Event Management System",
+      "subtitle": "A event management system with a focus on user experience, conversion optimization, and modern design principles.",
+      "category": "Web Development",
+      "url": "https://example.com/event-management-system",
+      "image": "",
+      "additionalContent": []
+    },
+    {
+      "id": 5,
+      "title": "Inventory Management System",
+      "subtitle": "A inventory management system with a focus on user experience, conversion optimization, and modern design principles.",
+      "category": "Web Development",
+      "url": "https://example.com/inventory-management-system",
+      "image": "",
+      "additionalContent": []
+    }
+  ]
+}
+

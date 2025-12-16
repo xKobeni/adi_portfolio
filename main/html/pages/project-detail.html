@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrian Perce | Project Detail</title>
+    
+    <!-- Prevent white flash - inline styles load immediately -->
+    <style>
+        html {
+            background: radial-gradient(circle at center, rgba(30, 35, 50, 1) 0%, rgba(15, 18, 25, 1) 50%, rgba(5, 8, 12, 1) 100%) !important;
+            height: 100%;
+            overflow: hidden;
+        }
+        body {
+            background: radial-gradient(circle at center, rgba(30, 35, 50, 1) 0%, rgba(15, 18, 25, 1) 50%, rgba(5, 8, 12, 1) 100%) !important;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .page-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: radial-gradient(circle at center, rgba(30, 35, 50, 1) 0%, rgba(15, 18, 25, 1) 50%, rgba(5, 8, 12, 1) 100%);
+            z-index: 99999;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: none;
+            display: block;
+        }
+        /* Fixed background elements */
+        .background-container {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .grain {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+        }
+        /* Fixed navbar */
+        nav {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000 !important;
+            background: transparent;
+        }
+        /* Scrollable content container - starts below navbar */
+        .project-detail-scroll-container {
+            position: fixed;
+            top: 120px; /* Start below navbar */
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            z-index: 10;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+            pointer-events: auto;
+        }
+        
+        /* Ensure all interactive elements are clickable */
+        .project-detail-scroll-container a,
+        .project-detail-scroll-container button {
+            pointer-events: auto !important;
+            position: relative;
+            z-index: 100;
+            cursor: pointer !important;
+        }
+        
+        /* Specifically ensure back button is clickable */
+        .back-button {
+            pointer-events: auto !important;
+            z-index: 200 !important;
+            cursor: pointer !important;
+            position: relative !important;
+            display: inline-flex !important;
+        }
+        
+        /* Ensure no overlays block the back button */
+        .page-transition-overlay {
+            pointer-events: none !important;
+        }
+        
+        /* Custom Scrollbar Design */
+        .project-detail-scroll-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .project-detail-scroll-container::-webkit-scrollbar-track {
+            background: transparent;
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .project-detail-scroll-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .project-detail-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .project-detail-scroll-container::-webkit-scrollbar-thumb:active {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        /* Scrollbar buttons - subtle design */
+        .project-detail-scroll-container::-webkit-scrollbar-button {
+            display: block;
+            height: 16px;
+            width: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: none;
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .project-detail-scroll-container::-webkit-scrollbar-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .project-detail-scroll-container::-webkit-scrollbar-button:active {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        /* Container padding */
+        .project-detail-scroll-container .max-w-5xl {
+            padding-left: 4%;
+            padding-right: 4%;
+        }
+        /* Ensure content section has proper spacing */
+        #project-detail {
+            padding-top: 0 !important;
+        }
+    </style>
+    
+    <!-- Resource Hints for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    
+    <!-- Scripts - Optimized Loading Order -->
+    <!-- Create overlay immediately to prevent flash - must be first -->
+    <script>
+        (function() {
+            const overlay = document.createElement('div');
+            overlay.className = 'page-transition-overlay active';
+            overlay.style.display = 'block';
+            if (document.documentElement) {
+                document.documentElement.appendChild(overlay);
+            } else {
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.documentElement.appendChild(overlay);
+                });
+            }
+        })();
+    </script>
+    <script src="../../js/performance.js"></script>
+    <script src="../../js/page-transitions.js"></script>
+    <script src="../../js/loading-screen.js"></script>
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="../../js/nav-loader.js" defer></script>
+    <script src="../../js/nav-controls.js" defer></script>
+    <script src="../../js/cursor-follower.js" defer></script>
+    <script src="../../js/grain.js" defer></script>
+    <script src="../../js/projects-loader.js"></script>
+    <script src="../../js/project-detail.js" defer></script>
+</head>
+<body>
+
+    <!-- Background Gradient -->
+    <div class="background-container">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    <div class="grain"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <!-- Navigation Bar will be loaded here by nav-loader.js -->
+
+    <!-- Scrollable Content Container -->
+    <div class="project-detail-scroll-container">
+        <div class="max-w-5xl mx-auto">
+
+            <!-- Project Detail Section -->
+            <section id="project-detail" class="min-h-screen pb-8">
+                <div class="w-full max-w-4xl mx-auto">
+                <!-- Project Image -->
+                <div class="project-detail-image-container mb-12 animate-project-image">
+                    <img id="projectImage" src="" alt="" class="project-detail-image w-full h-auto rounded-lg">
+                </div>
+
+                <!-- Project Text Details -->
+                <div class="project-detail-content mb-16 text-center">
+                    <h1 class="project-detail-title mb-4 animate-project-title" id="projectTitle">Loading...</h1>
+                    <p class="project-detail-category mb-6 animate-project-category" id="projectCategory"></p>
+                    <p class="project-detail-description mb-6 animate-project-description" id="projectDescription"></p>
+                    <a href="#" class="project-detail-url animate-project-url" id="projectUrl" target="_blank" rel="noopener noreferrer"></a>
+                </div>
+
+                <!-- Additional Content Sections -->
+                <div id="additionalContent" class="project-additional-content mb-16">
+                    <!-- Additional sections will be dynamically inserted here -->
+                </div>
+
+                <!-- Next Project Navigation -->
+                <div class="project-next-navigation pt-12 border-t border-white/10 animate-project-next">
+                    <div class="next-project-row">
+                        <div class="next-project-label">next project</div>
+                        <a href="#" id="nextProjectLink" class="next-project-link">
+                            <div class="next-project-title" id="nextProjectTitle">Loading...</div>
+                            <div class="next-project-category" id="nextProjectCategory"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </div>
+    </div>
+    
+</body>
+</html>
+

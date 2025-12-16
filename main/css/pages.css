@@ -1,0 +1,843 @@
+/* ==========================================================================
+   PAGE-SPECIFIC STYLES
+   ========================================================================== */
+
+/* About Page */
+.about-content {
+    padding-left: 4%;
+    padding-right: 4%;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.about-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.about-separator {
+    width: 100%;
+    max-width: 300px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin-top: 0.5rem;
+}
+
+.about-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-weight: 400;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 600px;
+}
+
+.resume-link {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 400;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 0.01em;
+    margin-top: 1rem;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.resume-link span:first-child {
+    font-size: 1.2em;
+    margin-right: 0.25rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.resume-link:hover {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+.resume-link:hover span:first-child {
+    transform: translateY(3px);
+}
+
+.resume-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.95);
+    transition: width 0.3s ease;
+}
+
+.resume-link:hover::after {
+    width: 100%;
+}
+
+/* Contact Page */
+.contact-content {
+    text-align: left;
+    padding: 0 4%;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: -8vh;
+}
+
+.contact-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 8vw, 3rem);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.contact-separator {
+    width: 100%;
+    max-width: auto;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 0.5rem 0 3rem 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8rem;
+    align-items: start;
+    width: 100%;
+}
+
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.contact-mail-section {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.contact-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 0;
+}
+
+.contact-mail-section .contact-label {
+    margin-bottom: 0;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-social-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-link-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.contact-link-indented {
+    margin-left: calc(7.5rem + 0.75rem + 1em + 0.5rem);
+    display: inline-flex;
+}
+
+.contact-link {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 400;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 0.01em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    text-transform: lowercase;
+}
+
+.contact-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.95);
+    transition: width 0.3s ease;
+}
+
+.contact-link:hover {
+    opacity: 0.8;
+    transform: translateX(3px);
+}
+
+.contact-link:hover::after {
+    width: 100%;
+}
+
+.contact-arrow {
+    font-size: 1em;
+    transition: transform 0.3s ease;
+}
+
+.contact-link:hover .contact-arrow {
+    transform: translate(2px, -2px);
+}
+
+.contact-divider {
+    width: 1px;
+    height: 100%;
+    min-height: 120px;
+    background-color: rgba(255, 255, 255, 0.4);
+    align-self: stretch;
+}
+
+/* Curved Card - appears in project preview on hover */
+.curved-card {
+    width: 40rem;
+    height: 31rem;
+    background: linear-gradient(135deg, rgba(138, 138, 255, 0.15), rgba(200, 180, 255, 0.1));
+    border-radius: 0 80px 0 0;
+    position: fixed;
+    bottom: -20px;
+    left: 0;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+}
+
+.project-preview-card.active .curved-card {
+    opacity: 1;
+    transform: translateY(0);
+    bottom: -20px;
+}
+
+/* Projects Page - Tailwind utility for hidden scrollbar */
+.scrollbar-none {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scrollbar-none::-webkit-scrollbar {
+    width: 0px;
+    display: none;
+}
+
+.scrollbar-none::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scrollbar-none::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+.project-preview-card {
+    background-color: transparent;
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    box-shadow: none;
+    overflow: visible;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+}
+
+.project-preview-card.active {
+    opacity: 1;
+    transform: translateY(0);
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.project-preview-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+.project-preview-title {
+    font-family: 'Poppins', cursive;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 1rem;
+    font-style: italic;
+    line-height: 1.2;
+    position: relative;
+    transition: opacity 0.4s ease-in-out, 
+                transform 0.4s ease-in-out;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.project-preview-title.changing {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.project-preview-subtitle {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.6;
+    max-width: 100%;
+    transition: opacity 0.4s ease-in-out,
+                transform 0.4s ease-in-out;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.project-preview-subtitle.changing {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.project-preview-url {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: auto;
+    padding-top: 2rem;
+    text-decoration: none;
+    width: 100%;
+    text-align: left;
+    padding-left: 0;
+    transition: color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.4s ease-in-out,
+                transform 0.4s ease-in-out;
+    position: relative;
+    z-index: 3;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.project-preview-url.changing {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.project-preview-url:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* Decorative elements removed - card is now transparent */
+
+/* Right Side: Projects List - Layout now handled by Tailwind */
+
+.work-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0;
+    line-height: 1;
+}
+
+.work-count {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1;
+}
+
+/* Projects list - Layout now handled by Tailwind, keeping only custom styles */
+.projects-list {
+    position: relative;
+}
+
+.project-item {
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-item:hover {
+    padding-left: 1rem;
+    transition: padding-left 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-item:hover .project-name::before {
+    content: '→ ';
+    margin-right: 0.5rem;
+}
+
+.project-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+    text-transform: lowercase;
+    transition: color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    line-height: 1.4;
+}
+
+.project-item:hover .project-name {
+    color: white;
+}
+
+.project-category {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+/* Project Detail Page */
+/* Prevent body scrolling on project detail page */
+body.project-detail-page {
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
+/* Scrollable container for project detail content */
+.project-detail-scroll-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 10;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+/* Custom Scrollbar Design for Webkit browsers (Chrome, Safari, Edge) */
+.project-detail-scroll-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.project-detail-scroll-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.project-detail-scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.project-detail-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.project-detail-scroll-container::-webkit-scrollbar-thumb:active {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Custom scrollbar buttons (up/down arrows) - subtle design */
+.project-detail-scroll-container::-webkit-scrollbar-button {
+    display: block;
+    height: 16px;
+    width: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.project-detail-scroll-container::-webkit-scrollbar-button:single-button {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.project-detail-scroll-container::-webkit-scrollbar-button:single-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.project-detail-scroll-container::-webkit-scrollbar-button:single-button:active {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Hide scrollbar buttons on Firefox */
+@-moz-document url-prefix() {
+    .project-detail-scroll-container {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+    }
+}
+
+/* Ensure background stays fixed on project detail page */
+body.project-detail-page .background-container,
+body.project-detail-page .grain {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Ensure navbar stays fixed on project detail page */
+body.project-detail-page nav {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000 !important;
+    background: transparent;
+    pointer-events: auto;
+}
+
+/* Add padding to content for fixed navbar - navbar is pt-24 (96px) + pb-6 (24px) = ~120px */
+.project-detail-scroll-container {
+    padding-top: 120px;
+}
+
+.project-detail-scroll-container .max-w-5xl {
+    padding-top: 0;
+}
+
+/* Ensure project detail section doesn't have extra padding */
+body.project-detail-page #project-detail {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+.back-button {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 200 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    display: inline-flex;
+}
+
+.back-button:hover {
+    transform: translateX(-4px);
+}
+
+/* Ensure all links in project detail are clickable */
+#project-detail a {
+    pointer-events: auto !important;
+    z-index: 100;
+    position: relative;
+}
+
+/* Project Image Container */
+.project-detail-image-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.project-detail-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Project Content */
+.project-detail-content {
+    color: white;
+}
+
+.project-detail-title {
+    font-family: 'Poppins', cursive;
+    font-size: 3rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 1rem;
+    font-style: italic;
+    line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .project-detail-title {
+        font-size: 4rem;
+    }
+}
+
+.project-detail-category {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+}
+
+.project-detail-description {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.8;
+    max-width: 100%;
+    margin: 0 auto 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .project-detail-description {
+        font-size: 1.25rem;
+        max-width: 800px;
+    }
+}
+
+.project-detail-url {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.project-detail-url:hover {
+    color: white;
+}
+
+/* Additional Content Sections */
+.project-additional-content {
+    width: 100%;
+}
+
+.project-additional-section {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.project-additional-section:last-child {
+    margin-bottom: 0;
+}
+
+.project-additional-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+}
+
+.project-additional-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .project-additional-text {
+        font-size: 1.125rem;
+        max-width: 800px;
+    }
+}
+
+.project-additional-text p {
+    margin-bottom: 1rem;
+}
+
+.project-additional-text p:last-child {
+    margin-bottom: 0;
+}
+
+.project-additional-text h1,
+.project-additional-text h2,
+.project-additional-text h3,
+.project-additional-text h4,
+.project-additional-text h5,
+.project-additional-text h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: white;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.project-additional-text h1 {
+    font-size: 2rem;
+}
+
+.project-additional-text h2 {
+    font-size: 1.75rem;
+}
+
+.project-additional-text h3 {
+    font-size: 1.5rem;
+}
+
+.project-additional-text h4 {
+    font-size: 1.25rem;
+}
+
+.project-additional-text ul,
+.project-additional-text ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.project-additional-text li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.project-additional-text ul li {
+    list-style-type: disc;
+}
+
+.project-additional-text ol li {
+    list-style-type: decimal;
+}
+
+/* Next Project */
+.project-next-navigation {
+    width: 100%;
+    padding-top: 3rem;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.next-project-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    transition: padding-left 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+}
+
+.next-project-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
+    transition: color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.next-project-label::before {
+    content: '→ ';
+    margin-right: 0.4rem;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.next-project-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.35rem;
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.next-project-title {
+    font-family: 'Poppins', cursive;
+    font-size: clamp(1.6rem, 2vw, 2.2rem);
+    font-weight: 700;
+    color: white;
+    text-transform: lowercase;
+    letter-spacing: 0.01em;
+    transition: color 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+.next-project-category {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: capitalize;
+}
+
+.next-project-link:hover .next-project-title {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.next-project-link:hover .next-project-category {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Hover behavior similar to project list */
+.next-project-row:hover {
+    padding-left: 0.75rem;
+}
+
+.next-project-row:hover .next-project-label {
+    color: white;
+}
+
+.next-project-row:hover .next-project-title {
+    color: white;
+}
+
+.next-project-row:hover .next-project-label::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Responsive adjustments - Now handled by Tailwind lg: breakpoint */
+

@@ -1,0 +1,75 @@
+<!-- Navigation Bar -->
+<nav class="fixed top-0 left-0 right-0 pt-24 pr-24 pl-24 pb-6 flex justify-between items-center z-[100]">
+    <!-- Logo on Left -->
+    <div class="logo-container">
+        <a href="../index.html" class="logo-text">A.P</a>
+    </div>
+    
+    <!-- Right Side: Language, Light Icon, Burger Menu -->
+    <div class="nav-right flex items-center gap-6">
+        <!-- Language Selector -->
+        <button id="language-toggle" class="nav-item text-white hover:text-gray-300 transition text-sm font-medium">EN</button>
+        
+        <!-- Light/Dark Mode Toggle -->
+        <button id="theme-toggle" class="nav-item text-white hover:text-gray-300 transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+        </button>
+        
+        <!-- Burger Menu -->
+        <button id="burger-menu" class="nav-item burger-menu-btn">
+            <div class="burger-grid">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
+        </button>
+    </div>
+</nav>
+
+<!-- Navigation Overlay -->
+<div id="nav-overlay" class="nav-overlay">
+    <div class="nav-overlay-background"></div>
+    <div class="grain"></div>
+    
+    <!-- Decorative Blob Shapes -->
+    <div class="nav-overlay-blobs">
+        <div class="nav-blob nav-blob-1"></div>
+        <div class="nav-blob nav-blob-2"></div>
+        <div class="nav-blob nav-blob-3"></div>
+        <div class="nav-blob nav-blob-4"></div>
+    </div>
+    
+    <div class="nav-overlay-content">
+        <div class="nav-overlay-menu">
+            <a href="home.html" class="nav-overlay-link">
+                <span class="nav-number">01</span>
+                <span class="nav-label">HOME</span>
+            </a>
+            <a href="projects.html" class="nav-overlay-link">
+                <span class="nav-number">02</span>
+                <span class="nav-label">PROJECTS</span>
+            </a>
+            <a href="about.html" class="nav-overlay-link">
+                <span class="nav-number">03</span>
+                <span class="nav-label">ABOUT</span>
+            </a>
+            <a href="contact.html" class="nav-overlay-link">
+                <span class="nav-number">04</span>
+                <span class="nav-label">CONTACT</span>
+            </a>
+        </div>
+        <div class="nav-overlay-social">
+            <a href="https://www.instagram.com/adriiyan_p/" class="social-link">
+                <span class="social-arrow">></span>
+                <span class="social-label">instagram</span>
+            </a>
+            <a href="#" class="social-link">
+                <span class="social-arrow">></span>
+                <span class="social-label">behance</span>
+            </a>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,17 @@
+/* ==========================================================================
+   CSS VARIABLES
+   ========================================================================== */
+
+:root {
+    --bg-gradient: radial-gradient(circle at center, rgba(30, 35, 50, 1) 0%, rgba(15, 18, 25, 1) 50%, rgba(5, 8, 12, 1) 100%);
+    --white-opacity-4: rgba(255, 255, 255, 0.4);
+    --white-opacity-5: rgba(255, 255, 255, 0.5);
+    --white-opacity-6: rgba(255, 255, 255, 0.6);
+    --white-opacity-8: rgba(255, 255, 255, 0.8);
+    --white-opacity-9: rgba(255, 255, 255, 0.9);
+    --white-opacity-95: rgba(255, 255, 255, 0.95);
+    --transition-fast: 0.3s ease;
+    --transition-medium: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --page-transition-duration: 0.6s;
+}
+

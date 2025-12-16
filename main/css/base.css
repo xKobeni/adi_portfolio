@@ -1,0 +1,77 @@
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg-gradient);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    opacity: 1;
+    contain: layout style paint;
+    /* Global scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+body.nav-overlay-open {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   GLOBAL CUSTOM SCROLLBAR DESIGN
+   ========================================================================== */
+
+/* Custom Scrollbar for Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Custom scrollbar buttons (up/down arrows) - subtle design */
+::-webkit-scrollbar-button {
+    display: block;
+    height: 16px;
+    width: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-button:active {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Firefox scrollbar styling */
+@-moz-document url-prefix() {
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+    }
+}
+

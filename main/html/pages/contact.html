@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrian Perce | Contact</title>
+    
+    <!-- Prevent white flash - inline styles load immediately -->
+    <style>
+        html {
+            background: radial-gradient(circle at center, rgba(30, 35, 50, 1) 0%, rgba(15, 18, 25, 1) 50%, rgba(5, 8, 12, 1) 100%) !important;
+        }
+        body {
+            background: radial-gradient(circle at center, rgba(30, 35, 50, 1) 0%, rgba(15, 18, 25, 1) 50%, rgba(5, 8, 12, 1) 100%) !important;
+            margin: 0;
+            padding: 0;
+        }
+        .page-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: radial-gradient(circle at center, rgba(30, 35, 50, 1) 0%, rgba(15, 18, 25, 1) 50%, rgba(5, 8, 12, 1) 100%);
+            z-index: 99999;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: none;
+            display: block;
+        }
+    </style>
+    
+    <!-- Resource Hints for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    
+    <!-- Scripts - Optimized Loading Order -->
+    <!-- Create overlay immediately to prevent flash - must be first -->
+    <script>
+        (function() {
+            const overlay = document.createElement('div');
+            overlay.className = 'page-transition-overlay active';
+            overlay.style.display = 'block';
+            if (document.documentElement) {
+                document.documentElement.appendChild(overlay);
+            } else {
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.documentElement.appendChild(overlay);
+                });
+            }
+        })();
+    </script>
+    <script src="../../js/performance.js"></script>
+    <script src="../../js/page-transitions.js"></script>
+    <script src="../../js/loading-screen.js"></script>
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="../../js/nav-loader.js" defer></script>
+    <script src="../../js/nav-controls.js" defer></script>
+    <script src="../../js/cursor-follower.js" defer></script>
+    <script src="../../js/grain.js" defer></script>
+</head>
+<body>
+
+    <!-- Background Gradient -->
+    <div class="background-container">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    <div class="grain"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <!-- Navigation Bar will be loaded here by nav-loader.js -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="h-screen flex items-center justify-center text-white px-6 md:px-12 lg:px-24">
+        <div class="max-w-6xl w-full contact-content">
+            <div class="animate-fade-in-delay-1">
+                <h1 class="contact-title text-white mb-4">
+                    CONTACT
+                </h1>
+                <div class="contact-separator mb-4"></div>
+            </div>
+            
+            <div class="contact-grid">
+                <!-- Left Section - Mail -->
+                <div class="contact-section contact-mail-section animate-fade-in-delay-2">
+                    <span class="contact-label">MAIL</span>
+                    <a href="mailto:johnadrian.perce@gmail.com" class="contact-link">
+                        <span class="contact-arrow">↗</span>
+                        <span>johnadrian.perce@gmail.com</span>
+                    </a>
+                </div>
+                
+                <!-- Right Section - Social Medias -->
+                <div class="contact-section contact-social-section animate-fade-in-delay-3">
+                    <div class="contact-social-wrapper">
+                        <div class="contact-link-row">
+                            <span class="contact-label">SOCIALS</span>
+                            <a href="https://github.com/xKobeni" 
+                            target="_blank"
+                            class="contact-link">
+                                <span class="contact-arrow">↗</span>
+                                <span>Github</span>
+                            </a>
+                        </div>
+                        <div class="contact-link-row">
+                            <span class="contact-label">SOCIALS</span>
+                            <a href="https://www.facebook.com/Adrian.Perce.08/" 
+                            target="_blank"
+                            class="contact-link">
+                                <span class="contact-arrow">↗</span>
+                                <span>Facebook</span>
+                            </a>
+                        </div>
+                        <div class="contact-link-row">
+                            <span class="contact-label">SOCIALS</span>
+                            <a href="https://www.instagram.com/adriiyan_p/" 
+                            target="_blank"
+                            class="contact-link">
+                                <span class="contact-arrow">↗</span>
+                                <span>instagram</span>
+                            </a>
+                        </div>
+                        <div class="contact-link-row">
+                            <span class="contact-label">SOCIALS</span>
+                            <a href="#" class="contact-link">
+                                <span class="contact-arrow">↗</span>
+                                <span>LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>
+
