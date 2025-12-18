@@ -70,6 +70,7 @@ function initializeNavControls() {
         themeToggle.addEventListener('click', function themeToggleHandler(e) {
             e.preventDefault();
             document.body.classList.toggle('light-theme');
+            document.documentElement.classList.toggle('light-theme');
             // Store preference in localStorage
             const isLight = document.body.classList.contains('light-theme');
             localStorage.setItem('theme', isLight ? 'light' : 'dark');
@@ -79,6 +80,7 @@ function initializeNavControls() {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             document.body.classList.add('light-theme');
+            document.documentElement.classList.add('light-theme');
         }
     }
 

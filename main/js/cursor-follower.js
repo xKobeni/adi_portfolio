@@ -19,6 +19,15 @@
     // Cache transform strings to avoid string concatenation in animation loop
     const circleTransform = cursorFollower.style;
     const dotTransform = cursorDot.style;
+
+    // Theme-aware colors from CSS variables
+    function getCursorRgb() {
+        const value = getComputedStyle(document.documentElement).getPropertyValue('--cursor-rgb');
+        return (value && value.trim()) ? value.trim() : '255,255,255';
+    }
+    function rgba(alpha, base = getCursorRgb()) {
+        return `rgba(${base}, ${alpha})`;
+    }
     
     // Use single object for mouse position to reduce memory allocation
     const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
@@ -187,17 +196,18 @@
         cursorFollower.style.height = `${displaySize}px`;
         
         // Apply smoothly interpolated visual properties - Optimized
-        cursorFollower.style.borderColor = `rgba(255, 255, 255, ${currentBorderOpacity})`;
+        const cursorRgb = getCursorRgb();
+        cursorFollower.style.borderColor = rgba(currentBorderOpacity, cursorRgb);
         cursorFollower.style.borderWidth = `${currentBorderWidth}px`;
         // Reduced blur for better performance
         cursorFollower.style.filter = `blur(${currentBlur * 0.5}px) brightness(${currentBrightness})`;
         
         // Simplified glow effect - Single shadow for better performance
-        cursorFollower.style.boxShadow = `0 0 ${20 * currentGlowIntensity}px rgba(255, 255, 255, ${currentGlowIntensity * 0.5})`;
+        cursorFollower.style.boxShadow = `0 0 ${20 * currentGlowIntensity}px ${rgba(currentGlowIntensity * 0.5, cursorRgb)}`;
         
         // Update dot with smooth interpolation - Simplified
-        cursorDot.style.borderColor = `rgba(255, 255, 255, ${currentDotBorderOpacity})`;
-        cursorDot.style.boxShadow = `0 0 ${10 * currentDotGlowIntensity}px rgba(255, 255, 255, ${currentDotGlowIntensity * 0.6})`;
+        cursorDot.style.borderColor = rgba(currentDotBorderOpacity, cursorRgb);
+        cursorDot.style.boxShadow = `0 0 ${10 * currentDotGlowIntensity}px ${rgba(currentDotGlowIntensity * 0.6, cursorRgb)}`;
         cursorDot.style.opacity = '1';
         
         // Calculate deltas

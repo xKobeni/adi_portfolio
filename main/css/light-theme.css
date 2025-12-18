@@ -1,0 +1,247 @@
+/* ==========================================================================
+   LIGHT THEME OVERRIDES
+   Applied when body/html has the `light-theme` class
+   ========================================================================== */
+
+/* Base + background */
+html.light-theme,
+body.light-theme {
+    --bg-gradient: radial-gradient(circle at center, #f7f9ff 0%, #e7edfb 45%, #d6deef 100%);
+    --cursor-rgb: 15,22,33;
+    --loading-ink: 15,22,33;
+    background: var(--bg-gradient) !important;
+    color: #0f1621;
+}
+
+body.light-theme .background-container,
+body.light-theme .nav-overlay-background {
+    background: var(--bg-gradient);
+}
+
+body.light-theme .page-transition-overlay {
+    background: var(--bg-gradient) !important;
+}
+
+body.light-theme .page-loading-bar {
+    background: linear-gradient(90deg, rgba(15, 22, 33, 0.9) 0%, rgba(15, 22, 33, 0.6) 100%) !important;
+    box-shadow: 0 0 10px rgba(15, 22, 33, 0.25) !important;
+}
+
+body.light-theme .loading-screen {
+    --loading-ink: 15,22,33;
+}
+
+body.light-theme .bubble {
+    /* Boost contrast so bubbles are visible on the light canvas */
+    background: radial-gradient(circle, rgba(15, 22, 33, 0.18) 0%, rgba(15, 22, 33, 0.12) 40%, rgba(15, 22, 33, 0.06) 70%, transparent 90%);
+    filter: blur(50px);
+    opacity: 1;
+}
+
+body.light-theme .grain {
+    /* Make grain visible on bright backgrounds */
+    mix-blend-mode: overlay;
+    opacity: 0.35;
+}
+
+/* Navigation */
+body.light-theme .logo-text {
+    border-color: rgba(15, 22, 33, 0.35);
+    -webkit-text-stroke: 0.5px rgba(15, 22, 33, 0.6);
+    text-stroke: 0.5px rgba(15, 22, 33, 0.6);
+}
+
+/* Global text/button/link colors in light mode */
+body.light-theme a,
+body.light-theme button,
+body.light-theme .nav-item {
+    color: #0f1621;
+}
+
+body.light-theme a:hover,
+body.light-theme button:hover,
+body.light-theme .nav-item:hover {
+    color: #0b1220;
+}
+
+body.light-theme .nav-overlay-link:hover .nav-label,
+body.light-theme .nav-overlay-link:hover .nav-number {
+    color: #0b1220;
+}
+
+body.light-theme .nav-item {
+    color: #0f1621;
+}
+
+body.light-theme .nav-item:hover {
+    color: #0b1220;
+}
+
+body.light-theme .burger-grid span {
+    background-color: #0f1621;
+}
+
+body.light-theme .burger-grid span:nth-child(5)::before,
+body.light-theme .burger-grid span:nth-child(5)::after {
+    background-color: #0f1621;
+}
+
+body.light-theme.nav-overlay-open .burger-menu-btn .burger-grid span:nth-child(5)::before,
+body.light-theme.nav-overlay-open .burger-menu-btn .burger-grid span:nth-child(5)::after {
+    background-color: #0f1621 !important;
+}
+
+body.light-theme .nav-overlay-link {
+    color: #0f1621;
+}
+
+body.light-theme .nav-label::after {
+    background-color: #0f1621;
+}
+
+body.light-theme .nav-number {
+    opacity: 0.65;
+}
+
+body.light-theme .nav-blob {
+    background: radial-gradient(circle, rgba(219, 234, 254, 0.9) 0%, rgba(191, 219, 254, 0.7) 100%);
+    opacity: 0.65;
+}
+
+/* Typography */
+body.light-theme .main-heading,
+body.light-theme .name-highlight,
+body.light-theme .about-title,
+body.light-theme .contact-title,
+body.light-theme .work-title {
+    color: #0f1621;
+}
+
+body.light-theme .hollow-text {
+    -webkit-text-stroke: 1px rgba(15, 22, 33, 0.5);
+    text-stroke: 1px rgba(15, 22, 33, 0.5);
+}
+
+body.light-theme .subtitle-text,
+body.light-theme .project-preview-subtitle,
+body.light-theme .project-preview-url,
+body.light-theme .work-count,
+body.light-theme .resume-link,
+body.light-theme .contact-link,
+body.light-theme .contact-label,
+body.light-theme .about-text,
+body.light-theme .project-category {
+    color: rgba(15, 22, 33, 0.82);
+}
+
+body.light-theme .project-preview-title,
+body.light-theme .project-name,
+body.light-theme .project-title,
+body.light-theme .project-detail-title,
+body.light-theme .next-project-title {
+    color: #0f1621;
+}
+
+body.light-theme .project-name:hover,
+body.light-theme .project-preview-url:hover,
+body.light-theme .project-detail-url:hover,
+body.light-theme .resume-link:hover,
+body.light-theme .contact-link:hover {
+    color: #0b1220;
+}
+
+/* Category / meta text and hover */
+body.light-theme .project-category,
+body.light-theme .project-detail-category,
+body.light-theme .next-project-category,
+body.light-theme .project-item .project-category {
+    color: rgba(15, 22, 33, 0.65);
+}
+
+body.light-theme .project-item:hover .project-category,
+body.light-theme .project-detail-url:hover + .project-detail-category,
+body.light-theme .next-project-link:hover .next-project-category {
+    color: #0b1220;
+}
+
+/* Social links (overlay/footer/contact) */
+body.light-theme .social-link,
+body.light-theme .social-label,
+body.light-theme .social-arrow {
+    color: #0f1621;
+}
+
+body.light-theme .social-link:hover .social-label,
+body.light-theme .social-link:hover .social-arrow {
+    color: #0b1220;
+}
+
+body.light-theme .project-detail-content,
+body.light-theme .project-detail-description,
+body.light-theme .project-detail-category,
+body.light-theme .project-additional-text,
+body.light-theme .project-detail-url,
+body.light-theme .next-project-category,
+body.light-theme .next-project-label {
+    color: rgba(15, 22, 33, 0.82);
+}
+
+body.light-theme .project-detail-url:hover {
+    color: #0b1220;
+}
+
+body.light-theme .cta-link {
+    color: #0f1621;
+}
+
+body.light-theme .cta-link:hover {
+    color: #0b1220;
+}
+
+/* Lines / separators */
+body.light-theme .about-separator,
+body.light-theme .contact-separator,
+body.light-theme .projects-header + div {
+    background-color: rgba(15, 22, 33, 0.25);
+}
+
+/* Cards and list items */
+body.light-theme .card-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 30px rgba(15, 22, 33, 0.12);
+    color: #0f1621;
+}
+
+body.light-theme .project-item {
+    border-color: rgba(15, 22, 33, 0.12) !important;
+}
+
+body.light-theme .project-item:hover .project-name::before {
+    color: #0f1621;
+}
+
+body.light-theme .project-preview-card .curved-card {
+    border-color: rgba(15, 22, 33, 0.12);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(59, 130, 246, 0.07));
+}
+
+/* Tailwind utility color overrides used in markup */
+body.light-theme .text-white,
+body.light-theme .hover\:text-gray-300:hover,
+body.light-theme .text-gray-300,
+body.light-theme .text-white\/80,
+body.light-theme .text-white\/60 {
+    color: #0f1621 !important;
+}
+
+body.light-theme .border-white\/10 {
+    border-color: rgba(15, 22, 33, 0.12) !important;
+}
+
+body.light-theme .bg-white\/30 {
+    background-color: rgba(15, 22, 33, 0.08) !important;
+}
+
+body.light-theme a {
+    color: inherit;
+}

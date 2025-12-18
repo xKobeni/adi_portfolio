@@ -216,13 +216,13 @@ function createFallbackNav() {
                     </a>
                 </div>
                 <div class="nav-overlay-social">
-                    <a href="#" class="social-link">
+                    <a href="https://github.com/xKobeni" class="social-link">
                         <span class="social-arrow">></span>
-                        <span class="social-label">instagram</span>
+                        <span class="social-label">github</span>
                     </a>
-                    <a href="#" class="social-link">
+                    <a href="https://www.linkedin.com/in/john-adrian-perce-08/" class="social-link">
                         <span class="social-arrow">></span>
-                        <span class="social-label">behance</span>
+                        <span class="social-label">linkedin</span>
                     </a>
                 </div>
             </div>
