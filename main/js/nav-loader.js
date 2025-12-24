@@ -170,7 +170,7 @@ function createFallbackNav() {
     const navHTML = `
         <nav class="fixed top-0 left-0 right-0 pt-24 pr-24 pl-24 pb-6 flex justify-between items-center z-[100]">
             <div class="logo-container">
-                <a href="../index.html" class="logo-text">A.P</a>
+                <a href="home.html" class="logo-text" data-no-transition>A.P</a>
             </div>
             <div class="nav-right flex items-center gap-6">
                 <button id="language-toggle" class="nav-item text-white hover:text-gray-300 transition text-sm font-medium">EN</button>

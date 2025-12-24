@@ -120,6 +120,15 @@
                 return;
             }
             
+            // Skip logo link or links with data-no-transition - let them navigate normally
+            if (link.classList.contains('logo-text') || link.hasAttribute('data-no-transition')) {
+                // Set flag to skip loading screen on next page
+                sessionStorage.setItem('skipLoadingScreen', 'true');
+                // Also set pageTransition flag for page transitions
+                sessionStorage.setItem('pageTransition', 'fadeIn');
+                return;
+            }
+            
             try {
                 const url = new URL(link.href, window.location.origin);
                 const currentUrl = new URL(window.location.href);
@@ -142,6 +151,11 @@
         
         // Only handle internal links (same origin)
         if (!link || link.href.startsWith('javascript:') || link.href.startsWith('#')) {
+            return;
+        }
+        
+        // Skip logo link or links with data-no-transition - let them navigate normally
+        if (link.classList.contains('logo-text') || link.hasAttribute('data-no-transition')) {
             return;
         }
         
@@ -234,6 +248,11 @@
             
             // Skip external links and anchors
             if (link.href.startsWith('javascript:') || link.href.startsWith('#')) {
+                return;
+            }
+            
+            // Skip logo link or links with data-no-transition - let them navigate normally
+            if (link.classList.contains('logo-text') || link.hasAttribute('data-no-transition')) {
                 return;
             }
             

@@ -179,10 +179,18 @@
     left: 100%;
 }
 
+.resume-link {
+    position: relative;
+}
+
 .resume-link-icon {
     font-size: 1.1em;
     display: inline-block;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 1;
+    position: relative;
+    width: 1.1em;
+    text-align: center;
 }
 
 .resume-link-text {
@@ -193,10 +201,15 @@
 .resume-link-arrow {
     font-size: 1em;
     opacity: 0;
-    transform: translateX(-10px);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    z-index: 1;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%) translateX(-10px);
+    z-index: 2;
+    pointer-events: none;
+    width: 1em;
+    text-align: center;
 }
 
 .resume-link:hover {
@@ -207,12 +220,13 @@
 }
 
 .resume-link:hover .resume-link-icon {
+    opacity: 0;
     transform: translateY(4px);
 }
 
 .resume-link:hover .resume-link-arrow {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(-50%) translateX(0);
 }
 
 .resume-link::after {
@@ -427,6 +441,77 @@
 
 .contact-link:hover .contact-arrow {
     transform: translate(2px, -2px);
+}
+
+.contact-social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: 1.5rem;
+    color: rgba(255, 255, 255, 0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.contact-social-icon svg {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-link-row {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-link-row:hover .contact-social-icon {
+    color: rgba(255, 255, 255, 1);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.contact-link-row:hover .contact-social-icon svg {
+    filter: drop-shadow(0 0 8px rgba(138, 138, 255, 0.5));
+}
+
+/* GitHub specific hover */
+.contact-link-row:hover .contact-social-icon[data-social="github"] {
+    color: rgba(255, 255, 255, 1);
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.contact-link-row:hover .contact-social-icon[data-social="github"] svg {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+
+/* Facebook specific hover */
+.contact-link-row:hover .contact-social-icon[data-social="facebook"] {
+    color: rgba(59, 89, 152, 1);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.contact-link-row:hover .contact-social-icon[data-social="facebook"] svg {
+    filter: drop-shadow(0 0 8px rgba(59, 89, 152, 0.6));
+}
+
+/* Instagram specific hover */
+.contact-link-row:hover .contact-social-icon[data-social="instagram"] {
+    color: rgba(225, 48, 108, 1);
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.contact-link-row:hover .contact-social-icon[data-social="instagram"] svg {
+    filter: drop-shadow(0 0 8px rgba(225, 48, 108, 0.6));
+}
+
+/* LinkedIn specific hover */
+.contact-link-row:hover .contact-social-icon[data-social="linkedin"] {
+    color: rgba(0, 119, 181, 1);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.contact-link-row:hover .contact-social-icon[data-social="linkedin"] svg {
+    filter: drop-shadow(0 0 8px rgba(0, 119, 181, 0.6));
 }
 
 .contact-divider {

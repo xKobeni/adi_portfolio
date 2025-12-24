@@ -8,9 +8,15 @@
     // This must be checked synchronously at the top level, not inside any function
     try {
         const navigationFlag = sessionStorage.getItem('pageTransition');
-        if (navigationFlag === 'fadeIn') {
-            // This is a navigation transition - don't show loading screen
+        const skipLoadingFlag = sessionStorage.getItem('skipLoadingScreen');
+        
+        if (navigationFlag === 'fadeIn' || skipLoadingFlag === 'true') {
+            // This is a navigation transition or logo click - don't show loading screen
             // The page-transitions.js will handle the transition animation instead
+            // Clean up the skip flag
+            if (skipLoadingFlag === 'true') {
+                sessionStorage.removeItem('skipLoadingScreen');
+            }
             return; // Exit immediately - don't initialize loading screen
         }
     } catch (e) {

@@ -33,9 +33,21 @@ body.light-theme .loading-screen {
 
 body.light-theme .bubble {
     /* Boost contrast so bubbles are visible on the light canvas */
-    background: radial-gradient(circle, rgba(15, 22, 33, 0.18) 0%, rgba(15, 22, 33, 0.12) 40%, rgba(15, 22, 33, 0.06) 70%, transparent 90%);
+    background: radial-gradient(circle, rgba(15, 22, 33, 0.35) 0%, rgba(15, 22, 33, 0.25) 30%, rgba(15, 22, 33, 0.15) 50%, rgba(15, 22, 33, 0.08) 70%, transparent 90%);
     filter: blur(50px);
     opacity: 1;
+}
+
+body.light-theme .bubble:nth-child(1) {
+    background: radial-gradient(circle, rgba(15, 22, 33, 0.35) 0%, rgba(15, 22, 33, 0.25) 30%, rgba(15, 22, 33, 0.15) 50%, rgba(15, 22, 33, 0.08) 70%, transparent 90%);
+}
+
+body.light-theme .bubble:nth-child(2) {
+    background: radial-gradient(circle, rgba(15, 22, 33, 0.32) 0%, rgba(15, 22, 33, 0.22) 35%, rgba(15, 22, 33, 0.12) 55%, rgba(15, 22, 33, 0.06) 75%, transparent 90%);
+}
+
+body.light-theme .bubble:nth-child(3) {
+    background: radial-gradient(circle, rgba(15, 22, 33, 0.33) 0%, rgba(15, 22, 33, 0.23) 40%, rgba(15, 22, 33, 0.13) 60%, rgba(15, 22, 33, 0.07) 80%, transparent 95%);
 }
 
 body.light-theme .grain {
@@ -126,12 +138,146 @@ body.light-theme .subtitle-text,
 body.light-theme .project-preview-subtitle,
 body.light-theme .project-preview-url,
 body.light-theme .work-count,
-body.light-theme .resume-link,
 body.light-theme .contact-link,
 body.light-theme .contact-label,
 body.light-theme .about-text,
 body.light-theme .project-category {
     color: rgba(15, 22, 33, 0.82);
+}
+
+body.light-theme .contact-social-icon {
+    color: rgba(15, 22, 33, 0.82);
+}
+
+body.light-theme .contact-link-row:hover .contact-social-icon {
+    color: rgba(15, 22, 33, 1);
+}
+
+body.light-theme .contact-link-row:hover .contact-social-icon svg {
+    filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.4));
+}
+
+/* GitHub specific hover - light theme */
+body.light-theme .contact-link-row:hover .contact-social-icon[data-social="github"] {
+    color: rgba(15, 22, 33, 1);
+}
+
+body.light-theme .contact-link-row:hover .contact-social-icon[data-social="github"] svg {
+    filter: drop-shadow(0 0 6px rgba(15, 22, 33, 0.5));
+}
+
+/* Facebook specific hover - light theme */
+body.light-theme .contact-link-row:hover .contact-social-icon[data-social="facebook"] {
+    color: rgba(59, 89, 152, 0.9);
+}
+
+body.light-theme .contact-link-row:hover .contact-social-icon[data-social="facebook"] svg {
+    filter: drop-shadow(0 0 6px rgba(59, 89, 152, 0.5));
+}
+
+/* Instagram specific hover - light theme */
+body.light-theme .contact-link-row:hover .contact-social-icon[data-social="instagram"] {
+    color: rgba(225, 48, 108, 0.9);
+}
+
+body.light-theme .contact-link-row:hover .contact-social-icon[data-social="instagram"] svg {
+    filter: drop-shadow(0 0 6px rgba(225, 48, 108, 0.5));
+}
+
+/* LinkedIn specific hover - light theme */
+body.light-theme .contact-link-row:hover .contact-social-icon[data-social="linkedin"] {
+    color: rgba(0, 119, 181, 0.9);
+}
+
+body.light-theme .contact-link-row:hover .contact-social-icon[data-social="linkedin"] svg {
+    filter: drop-shadow(0 0 6px rgba(0, 119, 181, 0.5));
+}
+
+/* About Page - Light Theme */
+body.light-theme .about-title {
+    background: linear-gradient(135deg, rgba(15, 22, 33, 1) 0%, rgba(15, 22, 33, 0.85) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.light-theme .about-title-accent {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.8), rgba(99, 102, 241, 0.6));
+}
+
+body.light-theme .about-separator {
+    background: linear-gradient(90deg, rgba(15, 22, 33, 0.4) 0%, rgba(15, 22, 33, 0.15) 100%);
+}
+
+body.light-theme .about-separator::after {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.6), rgba(99, 102, 241, 0.4));
+}
+
+body.light-theme .about-text {
+    color: rgba(15, 22, 33, 0.85);
+}
+
+body.light-theme .about-text-highlight {
+    color: rgba(15, 22, 33, 1);
+}
+
+body.light-theme .about-text-highlight::after {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.5), rgba(99, 102, 241, 0.3));
+}
+
+body.light-theme .about-portrait-glow {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%);
+}
+
+body.light-theme .about-portrait-image {
+    border-color: rgba(15, 22, 33, 0.2) !important;
+}
+
+body.light-theme .about-portrait-image:hover {
+    border-color: rgba(15, 22, 33, 0.35) !important;
+    box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
+}
+
+body.light-theme .about-portrait-ring {
+    border-color: rgba(15, 22, 33, 0.15);
+}
+
+body.light-theme .about-portrait-ring::before {
+    background: rgba(59, 130, 246, 0.7);
+}
+
+/* Resume Link - Light Theme */
+body.light-theme .resume-link {
+    color: rgba(15, 22, 33, 0.9);
+    border-color: rgba(15, 22, 33, 0.25);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+body.light-theme .resume-link::before {
+    background: linear-gradient(90deg, transparent, rgba(15, 22, 33, 0.08), transparent);
+}
+
+body.light-theme .resume-link:hover {
+    border-color: rgba(15, 22, 33, 0.4);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+    color: rgba(15, 22, 33, 1);
+}
+
+body.light-theme .resume-link-icon,
+body.light-theme .resume-link-text,
+body.light-theme .resume-link-arrow {
+    color: inherit;
+}
+
+/* About Page Decorative Elements - Light Theme */
+body.light-theme .about-decoration-1 {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+}
+
+body.light-theme .about-decoration-2 {
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
 }
 
 body.light-theme .project-preview-title,
@@ -148,6 +294,27 @@ body.light-theme .project-detail-url:hover,
 body.light-theme .resume-link:hover,
 body.light-theme .contact-link:hover {
     color: #0b1220;
+}
+
+/* Contact Link Hover Effects - Light Theme */
+body.light-theme .contact-link::after {
+    background-color: rgba(15, 22, 33, 0.82);
+}
+
+body.light-theme .contact-link:hover {
+    color: rgba(15, 22, 33, 1);
+    opacity: 1;
+    transform: translateX(3px);
+}
+
+body.light-theme .contact-link:hover::after {
+    width: 100%;
+    background-color: rgba(15, 22, 33, 1);
+}
+
+body.light-theme .contact-link:hover .contact-arrow {
+    transform: translate(2px, -2px);
+    color: rgba(15, 22, 33, 1);
 }
 
 /* Category / meta text and hover */
@@ -234,8 +401,20 @@ body.light-theme .text-white\/60 {
     color: #0f1621 !important;
 }
 
+body.light-theme .resume-link.text-white {
+    color: rgba(15, 22, 33, 0.9) !important;
+}
+
 body.light-theme .border-white\/10 {
     border-color: rgba(15, 22, 33, 0.12) !important;
+}
+
+body.light-theme .border-white\/30 {
+    border-color: rgba(15, 22, 33, 0.2) !important;
+}
+
+body.light-theme .bg-white\/5 {
+    background-color: rgba(15, 22, 33, 0.03) !important;
 }
 
 body.light-theme .bg-white\/30 {
