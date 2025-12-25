@@ -13,77 +13,132 @@ async function renderProjectsFromJSON() {
             projectsData = data.projects || [];
         }
         
-        // Find the projects list container
-        const projectsList = document.querySelector('.projects-list');
-        if (!projectsList) {
-            console.error('Projects list container not found');
+        // Find the projects grid container
+        const projectsGrid = document.querySelector('.projects-grid-container');
+        if (!projectsGrid) {
+            console.error('Projects grid container not found');
             return;
         }
         
         // Clear existing items (if any)
-        projectsList.innerHTML = '';
+        projectsGrid.innerHTML = '';
         
         // Update project count
-        const workCount = document.querySelector('.work-count');
+        const workCount = document.getElementById('projectsCount') || document.querySelector('.work-count');
         if (workCount) {
             workCount.textContent = projectsData.length;
         }
         
-        // Render each project
+        // Helper function to get project image
+        function getProjectImage(project) {
+            if (project.image && project.image.trim() !== '') {
+                return project.image;
+            }
+            // Fallback to first image from additionalContent
+            if (project.additionalContent && Array.isArray(project.additionalContent)) {
+                const firstImage = project.additionalContent.find(content => content.type === 'image' && content.src);
+                if (firstImage && firstImage.src) {
+                    return firstImage.src;
+                }
+            }
+            return '';
+        }
+        
+        // Render each project as a card
         projectsData.forEach((project, index) => {
-            const listItem = document.createElement('li');
-            listItem.className = 'project-item flex justify-between items-center py-5 min-h-[60px] border-b border-white/10 cursor-pointer relative animate-project-item';
+            const card = document.createElement('div');
+            card.className = 'project-card animate-project-card';
+            card.style.animationDelay = `${index * 0.1}s`;
             
             // Set data attributes
-            listItem.setAttribute('data-project-id', project.id);
-            listItem.setAttribute('data-title', project.title);
-            listItem.setAttribute('data-subtitle', project.subtitle);
-            listItem.setAttribute('data-category', project.category);
-            listItem.setAttribute('data-url', project.url);
+            card.setAttribute('data-project-id', project.id);
+            card.setAttribute('data-title', project.title);
+            card.setAttribute('data-subtitle', project.subtitle);
+            card.setAttribute('data-category', project.category);
+            card.setAttribute('data-url', project.url);
             if (project.image) {
-                listItem.setAttribute('data-image', project.image);
+                card.setAttribute('data-image', project.image);
             }
             if (project.additionalContent && project.additionalContent.length > 0) {
-                listItem.setAttribute('data-additional-content', JSON.stringify(project.additionalContent));
+                card.setAttribute('data-additional-content', JSON.stringify(project.additionalContent));
             }
             
-            // Create project name span
-            const projectName = document.createElement('span');
-            projectName.className = 'project-name';
-            projectName.textContent = project.title.toLowerCase();
+            const projectImage = getProjectImage(project);
             
-            // Create project category span
-            const projectCategory = document.createElement('span');
-            projectCategory.className = 'project-category';
-            projectCategory.textContent = project.category.toUpperCase();
+            // Create card HTML structure
+            card.innerHTML = `
+                <div class="project-card-image-wrapper">
+                    ${projectImage ? `<img src="${projectImage}" alt="${project.title}" class="project-card-image" loading="lazy">` : '<div class="project-card-image-placeholder"></div>'}
+                    <div class="project-card-overlay"></div>
+                </div>
+                <div class="project-card-content">
+                    <div class="project-card-category">${project.category}</div>
+                    <h3 class="project-card-title">${project.title}</h3>
+                    <p class="project-card-description">${project.subtitle}</p>
+                    <div class="project-card-footer">
+                        <span class="project-card-link">View Project →</span>
+                    </div>
+                </div>
+            `;
             
-            // Append to list item
-            listItem.appendChild(projectName);
-            listItem.appendChild(projectCategory);
+            // Add click handler
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+                const title = this.getAttribute('data-title');
+                const subtitle = this.getAttribute('data-subtitle');
+                const category = this.getAttribute('data-category');
+                const url = this.getAttribute('data-url');
+                const image = this.getAttribute('data-image') || '';
+                const additionalContent = this.getAttribute('data-additional-content');
+                
+                // Parse additional content if provided
+                let additionalContentArray = [];
+                if (additionalContent) {
+                    try {
+                        additionalContentArray = JSON.parse(additionalContent);
+                    } catch (e) {
+                        console.error('Error parsing additional content:', e);
+                    }
+                }
+                
+                // Store project data in sessionStorage for the detail page
+                sessionStorage.setItem('projectData', JSON.stringify({
+                    title: title,
+                    subtitle: subtitle,
+                    category: category,
+                    url: url,
+                    image: image,
+                    additionalContent: additionalContentArray
+                }));
+                
+                // Store current project index for next project navigation
+                sessionStorage.setItem('currentProjectIndex', index.toString());
+                
+                // Set flag to skip loading screen animation (use fade transition instead)
+                sessionStorage.setItem('pageTransition', 'fadeIn');
+                
+                // Navigate to project detail page
+                window.location.href = 'project-detail.html';
+            });
             
-            // Append to projects list
-            projectsList.appendChild(listItem);
+            // Append to grid
+            projectsGrid.appendChild(card);
         });
         
         // Store all projects data for navigation
         sessionStorage.setItem('allProjectsData', JSON.stringify(projectsData));
-        
-        // Re-initialize hover handlers after rendering
-        if (typeof initProjectsHover === 'function') {
-            initProjectsHover();
-        }
         
     } catch (error) {
         console.error('Error rendering projects:', error);
     }
 }
 
-// Auto-render if projects list exists and is empty, or if data-auto-render attribute is present
+// Auto-render if projects grid exists and is empty, or if data-auto-render attribute is present
 document.addEventListener('DOMContentLoaded', function() {
-    const projectsList = document.querySelector('.projects-list');
+    const projectsGrid = document.querySelector('.projects-grid-container');
     const autoRender = document.querySelector('[data-auto-render-projects]');
     
-    if (autoRender || (projectsList && projectsList.children.length === 0)) {
+    if (autoRender || (projectsGrid && projectsGrid.children.length === 0)) {
         renderProjectsFromJSON();
     }
 });

@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     const previewTitle = document.getElementById('previewTitle');
     const previewSubtitle = document.getElementById('previewSubtitle');
     const previewUrl = document.getElementById('previewUrl');
+    const previewImage = document.getElementById('previewImage');
+    const previewImageContainer = document.getElementById('previewImageContainer');
+    const previewCategory = document.getElementById('previewCategory');
     
     // Load projects data from JSON
     let projectsData = [];
@@ -63,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     let changeTimeout = null;
 
     // Function to update preview card with smooth transition
-    function updatePreview(title, subtitle, url) {
+    function updatePreview(title, subtitle, url, image, category) {
         // Cancel any pending reset or change
         if (resetTimeout) {
             clearTimeout(resetTimeout);
@@ -84,6 +87,8 @@ document.addEventListener('DOMContentLoaded', async function() {
             previewTitle.classList.remove('changing');
             previewSubtitle.classList.remove('changing');
             previewUrl.classList.remove('changing');
+            previewImageContainer.classList.remove('changing');
+            previewCategory.classList.remove('changing');
             
             // Force reflow to ensure reset is applied
             void previewTitle.offsetHeight;
@@ -93,16 +98,39 @@ document.addEventListener('DOMContentLoaded', async function() {
                 previewTitle.classList.add('changing');
                 previewSubtitle.classList.add('changing');
                 previewUrl.classList.add('changing');
+                previewImageContainer.classList.add('changing');
+                previewCategory.classList.add('changing');
                 
                 // Wait for fade out to complete (400ms), then update content and fade in
                 changeTimeout = setTimeout(() => {
                     // Update content
                     previewTitle.textContent = title;
                     previewSubtitle.textContent = subtitle;
-                    if (url) {
-                        previewUrl.textContent = url;
+                    
+                    // Update category
+                    if (category) {
+                        previewCategory.textContent = category.toUpperCase();
+                        previewCategory.style.display = 'inline-block';
+                    } else {
+                        previewCategory.style.display = 'none';
+                    }
+                    
+                    // Update image
+                    if (image && image.trim() !== '') {
+                        previewImage.src = image;
+                        previewImage.alt = title;
+                        previewImage.style.display = 'block';
+                        previewImageContainer.style.display = 'flex';
+                    } else {
+                        previewImage.style.display = 'none';
+                        previewImageContainer.style.display = 'none';
+                    }
+                    
+                    // Update URL
+                    if (url && url.trim() !== '') {
+                        previewUrl.textContent = 'View Project';
                         previewUrl.href = url;
-                        previewUrl.style.display = 'block';
+                        previewUrl.style.display = 'inline-flex';
                     } else {
                         previewUrl.style.display = 'none';
                     }
@@ -115,6 +143,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                         previewTitle.classList.remove('changing');
                         previewSubtitle.classList.remove('changing');
                         previewUrl.classList.remove('changing');
+                        previewImageContainer.classList.remove('changing');
+                        previewCategory.classList.remove('changing');
                     });
                 }, 400); // Full fade out duration
             });
@@ -123,13 +153,36 @@ document.addEventListener('DOMContentLoaded', async function() {
             previewTitle.classList.remove('changing');
             previewSubtitle.classList.remove('changing');
             previewUrl.classList.remove('changing');
+            previewImageContainer.classList.remove('changing');
+            previewCategory.classList.remove('changing');
             
             previewTitle.textContent = title;
             previewSubtitle.textContent = subtitle;
-            if (url) {
-                previewUrl.textContent = url;
+            
+            // Update category
+            if (category) {
+                previewCategory.textContent = category.toUpperCase();
+                previewCategory.style.display = 'inline-block';
+            } else {
+                previewCategory.style.display = 'none';
+            }
+            
+            // Update image
+            if (image && image.trim() !== '') {
+                previewImage.src = image;
+                previewImage.alt = title;
+                previewImage.style.display = 'block';
+                previewImageContainer.style.display = 'flex';
+            } else {
+                previewImage.style.display = 'none';
+                previewImageContainer.style.display = 'none';
+            }
+            
+            // Update URL
+            if (url && url.trim() !== '') {
+                previewUrl.textContent = 'View Project';
                 previewUrl.href = url;
-                previewUrl.style.display = 'block';
+                previewUrl.style.display = 'inline-flex';
             } else {
                 previewUrl.style.display = 'none';
             }
@@ -157,9 +210,42 @@ document.addEventListener('DOMContentLoaded', async function() {
                 previewUrl.textContent = '';
                 previewUrl.href = '#';
                 previewUrl.style.display = 'none';
+                previewImage.src = '';
+                previewImage.style.display = 'none';
+                previewImageContainer.style.display = 'none';
+                previewCategory.style.display = 'none';
             }
             resetTimeout = null;
         }, 350);
+    }
+
+    // Helper function to get image from project data
+    function getProjectImage(item, projectsData) {
+        // First try the data-image attribute
+        let image = item.getAttribute('data-image') || '';
+        
+        // If no image, try to get from projectsData
+        if (!image || image.trim() === '') {
+            const projectId = item.getAttribute('data-project-id');
+            if (projectId !== null && projectsData.length > 0) {
+                const project = projectsData.find(p => p.id === parseInt(projectId));
+                if (project) {
+                    // Try main image first
+                    if (project.image && project.image.trim() !== '') {
+                        image = project.image;
+                    } 
+                    // Fallback to first image from additionalContent
+                    else if (project.additionalContent && Array.isArray(project.additionalContent)) {
+                        const firstImage = project.additionalContent.find(content => content.type === 'image' && content.src);
+                        if (firstImage && firstImage.src) {
+                            image = firstImage.src;
+                        }
+                    }
+                }
+            }
+        }
+        
+        return image;
     }
 
     // Add hover and click event listeners to each project item
@@ -169,7 +255,9 @@ document.addEventListener('DOMContentLoaded', async function() {
             const title = this.getAttribute('data-title');
             const subtitle = this.getAttribute('data-subtitle');
             const url = this.getAttribute('data-url');
-            updatePreview(title, subtitle, url);
+            const image = getProjectImage(this, projectsData);
+            const category = this.getAttribute('data-category') || '';
+            updatePreview(title, subtitle, url, image, category);
         });
         
         item.addEventListener('click', function(e) {

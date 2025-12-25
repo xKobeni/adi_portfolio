@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adrian Perce | Project Detail</title>
+    <link rel="icon" type="image/png" href="../../assets/images/logo_adii.png">
     
     <!-- Prevent white flash - inline styles load immediately -->
     <style>
@@ -217,23 +218,26 @@
         <div class="max-w-5xl mx-auto">
 
             <!-- Project Detail Section -->
-            <section id="project-detail" class="min-h-screen pb-8">
-                <div class="w-full max-w-4xl mx-auto">
-                <!-- Project Image -->
-                <div class="project-detail-image-container mb-12 animate-project-image">
-                    <img id="projectImage" src="" alt="" class="project-detail-image w-full h-auto rounded-lg">
+            <section id="project-detail" class="min-h-screen pb-16 pt-8">
+                <div class="w-full max-w-6xl mx-auto">
+                
+                <!-- Project Header -->
+                <div class="project-header mb-16">
+                    <div class="project-header-content">
+                        <p class="project-detail-category mb-4 animate-project-category" id="projectCategory"></p>
+                        <h1 class="project-detail-title mb-6 animate-project-title" id="projectTitle">Loading...</h1>
+                        <p class="project-detail-description mb-8 animate-project-description" id="projectDescription"></p>
+                        <a href="#" class="project-detail-url animate-project-url" id="projectUrl" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
                 </div>
 
-                <!-- Project Text Details -->
-                <div class="project-detail-content mb-16 text-center">
-                    <h1 class="project-detail-title mb-4 animate-project-title" id="projectTitle">Loading...</h1>
-                    <p class="project-detail-category mb-6 animate-project-category" id="projectCategory"></p>
-                    <p class="project-detail-description mb-6 animate-project-description" id="projectDescription"></p>
-                    <a href="#" class="project-detail-url animate-project-url" id="projectUrl" target="_blank" rel="noopener noreferrer"></a>
+                <!-- Project Hero Image -->
+                <div class="project-detail-image-container mb-20 animate-project-image">
+                    <img id="projectImage" src="" alt="" class="project-detail-image w-full h-auto">
                 </div>
 
                 <!-- Additional Content Sections -->
-                <div id="additionalContent" class="project-additional-content mb-16">
+                <div id="additionalContent" class="project-additional-content">
                     <!-- Additional sections will be dynamically inserted here -->
                 </div>
 
