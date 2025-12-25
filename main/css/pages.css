@@ -818,12 +818,16 @@ body nav {
 
 .project-card-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: white;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
     margin: 0 0 0.75rem 0;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.85) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .project-card-description {

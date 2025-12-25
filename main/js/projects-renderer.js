@@ -76,7 +76,7 @@ async function renderProjectsFromJSON() {
                     <h3 class="project-card-title">${project.title}</h3>
                     <p class="project-card-description">${project.subtitle}</p>
                     <div class="project-card-footer">
-                        <span class="project-card-link">View Project →</span>
+                        <span class="project-card-link">View Project</span>
                     </div>
                 </div>
             `;
