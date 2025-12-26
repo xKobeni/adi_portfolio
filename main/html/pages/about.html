@@ -15,8 +15,113 @@
             background: radial-gradient(circle at center, rgba(30, 35, 50, 1) 0%, rgba(15, 18, 25, 1) 50%, rgba(5, 8, 12, 1) 100%) !important;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
-            min-height: -webkit-fill-available;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        /* Fixed background elements */
+        .background-container {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .grain {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+        }
+        /* Fixed navbar */
+        nav {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000 !important;
+            background: transparent;
+        }
+        /* Scrollable text content only - background stays fixed */
+        .about-scroll-container {
+            position: fixed;
+            top: 80px; /* Start below navbar on mobile */
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            z-index: 10;
+            pointer-events: none;
+        }
+        
+        @media (min-width: 768px) {
+            .about-scroll-container {
+                top: 120px; /* Start below navbar on desktop */
+            }
+        }
+        
+        /* Only text content scrolls */
+        .about-text-scrollable {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+            pointer-events: auto;
+        }
+        
+        /* Custom Scrollbar Design */
+        .about-text-scrollable::-webkit-scrollbar {
+            width: 8px;
+        }
+        .about-text-scrollable::-webkit-scrollbar-track {
+            background: transparent;
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .about-text-scrollable::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .about-text-scrollable::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .about-text-scrollable::-webkit-scrollbar-thumb:active {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Custom Scrollbar Design */
+        .about-scroll-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .about-scroll-container::-webkit-scrollbar-track {
+            background: transparent;
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .about-scroll-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .about-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .about-scroll-container::-webkit-scrollbar-thumb:active {
+            background: rgba(255, 255, 255, 0.5);
         }
         .page-transition-overlay {
             position: fixed;
@@ -96,27 +201,31 @@
 
     <!-- Navigation Bar will be loaded here by nav-loader.js -->
 
-    <!-- About Section -->
-    <section id="about" class="min-h-screen flex items-center justify-center text-white px-4 sm:px-6 md:px-12 lg:px-24 py-20 sm:py-0 relative overflow-hidden">
-        <div class="flex flex-col md:flex-row items-center gap-8 sm:gap-12 md:gap-16 max-w-6xl w-full relative z-10">
-            <!-- Portrait -->
-            <div class="mt-4 sm:mt-8 md:mt-0 animate-fade-in-delay-1 order-2 md:order-1">
-                <div class="about-portrait-container relative">
-                    <div class="about-portrait-glow"></div>
-                    <div class="w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-white/30 shadow-2xl bg-white/5 backdrop-blur-sm relative z-10 about-portrait-image">
-                        <img 
-                            src="../../assets/images/Adrian.jpg" 
-                            alt="Portrait of John Adrian Perce" 
-                            class="w-full h-full object-cover scale-105 transition-transform duration-700 hover:scale-100"
-                            loading="lazy"
-                        >
-                    </div>
-                    <div class="about-portrait-ring"></div>
-                </div>
+    <!-- Portrait - Fixed Position (Outside scroll container) -->
+    <div class="about-portrait-fixed animate-fade-in-delay-1">
+        <div class="about-portrait-container relative">
+            <div class="about-portrait-glow"></div>
+            <div class="w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-white/30 shadow-2xl bg-white/5 backdrop-blur-sm relative z-10 about-portrait-image">
+                <img 
+                    src="../../assets/images/Adrian.jpg" 
+                    alt="Portrait of John Adrian Perce" 
+                    class="w-full h-full object-cover scale-105 transition-transform duration-700 hover:scale-100"
+                    loading="lazy"
+                >
             </div>
+            <div class="about-portrait-ring"></div>
+        </div>
+    </div>
 
-            <!-- Text Content -->
-            <div class="about-content animate-fade-in-delay-2 order-1 md:order-2 flex-1 text-center md:text-left">
+    <!-- Scrollable Text Content Container -->
+    <div class="about-scroll-container">
+        <div class="about-text-scrollable">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative">
+                <!-- About Section - Scrollable Text Content -->
+                <section id="about" class="min-h-screen flex items-center justify-center text-white py-12 sm:py-16 md:py-20 relative">
+                    <div class="about-content-wrapper w-full">
+                        <!-- Text Content -->
+                        <div class="about-content animate-fade-in-delay-2 text-center md:text-left">
                 <div class="mb-4 sm:mb-6">
                     <h1 class="about-title text-white mb-3 relative inline-block">
                         ABOUT
@@ -124,21 +233,126 @@
                     </h1>
                     <div class="about-separator mb-6 sm:mb-8 mx-auto md:mx-0"></div>
                 </div>
-                <p class="about-text text-white leading-relaxed mb-6 sm:mb-10 max-w-2xl mx-auto md:mx-0">
+                <p class="about-text text-white leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto md:mx-0">
                     Hi, I'm <span class="about-text-highlight">John Adrian Perce</span>, also known as <span class="about-text-highlight">xKobeni</span>. I'm a UX/UI designer and full-stack developer who loves creating digital experiences. I also explore 3D modeling, game development, and interactive projects, and I'm always curious to learn new technologies and ways to combine design and code.
                 </p>
+                
+                <!-- Skills Section -->
+                <div class="about-skills mb-6 sm:mb-8 animate-fade-in-delay-4">
+                    <h3 class="about-skills-title mb-3">Skills & Technologies</h3>
+                    <div class="about-skills-grid">
+                        <!-- Frontend Development -->
+                        <div class="about-skill-item">
+                            <div class="about-skill-icon about-skill-icon-html">
+                                <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#E34F26" d="M9.032 2l10.005 112.093 44.896 12.401 45.02-12.387L118.968 2H9.032zm89.126 26.539l-.627 7.172L97.313 51H48.692l1.257 14h50.156l-.336 3.471-3.233 36.119-.238 2.27L64 102.609v.002l-.034.018-28.177-7.423L33.876 74h13.815l.979 10.919L63.957 89H64v-.546l15.355-3.875L80.959 67H33.997l-3.383-38.117L30.29 25h68.24l-.332 3.539z"/>
+                                </svg>
+                            </div>
+                            <div class="about-skill-content">
+                                <h4 class="about-skill-title">Frontend Development</h4>
+                                <p class="about-skill-tech">HTML, CSS, JavaScript, Tailwind, jQuery</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Frameworks & Libraries -->
+                        <div class="about-skill-item">
+                            <div class="about-skill-icon about-skill-icon-react">
+                                <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="64" cy="64" r="11.4" fill="#61DAFB"/>
+                                    <path stroke="#61DAFB" stroke-width="2" fill="none" d="M64 64m-11.4 0a11.4 11.4 0 1 1 22.8 0a11.4 11.4 0 1 1 -22.8 0"/>
+                                    <ellipse cx="64" cy="64" rx="11.4" ry="39.1" stroke="#61DAFB" stroke-width="2" fill="none"/>
+                                    <ellipse cx="64" cy="64" rx="39.1" ry="11.4" stroke="#61DAFB" stroke-width="2" fill="none"/>
+                                    <ellipse cx="64" cy="64" rx="11.4" ry="39.1" stroke="#61DAFB" stroke-width="2" fill="none" transform="rotate(60 64 64)"/>
+                                    <ellipse cx="64" cy="64" rx="39.1" ry="11.4" stroke="#61DAFB" stroke-width="2" fill="none" transform="rotate(60 64 64)"/>
+                                </svg>
+                            </div>
+                            <div class="about-skill-content">
+                                <h4 class="about-skill-title">Frameworks & Libraries</h4>
+                                <p class="about-skill-tech">React</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Development Tools -->
+                        <div class="about-skill-item">
+                            <div class="about-skill-icon about-skill-icon-git">
+                                <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#181717" d="M64 4C28.6 4 0 32.6 0 68c0 30 19.4 55.5 46.3 64.5 3.4.6 4.7-1.5 4.7-3.3 0-1.6-.1-7-.1-12.8-18.8 4.1-22.8-9-22.8-9-3.1-7.9-7.6-10-7.6-10-6.2-4.2.5-4.1.5-4.1 6.8.5 10.4 7 10.4 7 6.1 10.4 16 7.4 19.9 5.7.6-4.4 2.4-7.4 4.3-9.1-15-1.7-30.8-7.5-30.8-33.4 0-7.4 2.6-13.4 7-18.1-.7-1.7-3-8.5.7-17.7 0 0 5.7-1.8 18.6 6.9 5.4-1.5 11.2-2.3 17-2.3 5.8 0 11.6.8 17 2.3 12.9-8.7 18.6-6.9 18.6-6.9 3.7 9.2 1.4 16 .7 17.7 4.4 4.7 7 10.7 7 18.1 0 26-15.8 31.7-30.8 33.4 2.4 2.1 4.6 6.2 4.6 12.5 0 9-.1 16.3-.1 18.5 0 1.8 1.2 3.9 4.7 3.3C108.6 123.5 128 98 128 68c0-35.4-28.6-64-64-64z"/>
+                                </svg>
+                            </div>
+                            <div class="about-skill-content">
+                                <h4 class="about-skill-title">Development Tools</h4>
+                                <p class="about-skill-tech">Git</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Backend Development -->
+                        <div class="about-skill-item">
+                            <div class="about-skill-icon about-skill-icon-php">
+                                <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#777BB4" d="M64 4C28.6 4 0 32.6 0 68c0 35.4 28.6 64 64 64s64-28.6 64-64c0-35.4-28.6-64-64-64z"/>
+                                    <path fill="#fff" d="M64 12c30.9 0 56 25.1 56 56s-25.1 56-56 56S8 98.9 8 68s25.1-56 56-56zm0 8c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48z"/>
+                                    <text x="64" y="82" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#fff" text-anchor="middle">php</text>
+                                </svg>
+                            </div>
+                            <div class="about-skill-content">
+                                <h4 class="about-skill-title">Backend Development</h4>
+                                <p class="about-skill-tech">Node.js, MongoDB, MySQL, PostgreSQL, PHP, Python</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Design & CMS -->
+                        <div class="about-skill-item">
+                            <div class="about-skill-icon about-skill-icon-figma">
+                                <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#0ACF83" d="M45.5 129c11.9 0 21.5-9.6 21.5-21.5V86H45.5C33.6 86 24 95.6 24 107.5S33.6 129 45.5 129z"/>
+                                    <path fill="#A259FF" d="M24 64.5C24 52.6 33.6 43 45.5 43H67v43H45.5C33.6 86 24 76.4 24 64.5z"/>
+                                    <path fill="#F24E1E" d="M24 21.5C24 9.6 33.6 1 45.5 1H67v42H45.5C33.6 43 24 33.4 24 21.5z"/>
+                                    <path fill="#FF7262" d="M67 1h21.5C100.4 1 110 9.6 110 21.5S100.4 43 88.5 43H67V1z"/>
+                                    <path fill="#1ABCFE" d="M110 64.5c0 11.9-9.6 21.5-21.5 21.5S67 76.4 67 64.5 76.6 43 88.5 43 110 52.6 110 64.5z"/>
+                                </svg>
+                            </div>
+                            <div class="about-skill-content">
+                                <h4 class="about-skill-title">Design & Creative Tools</h4>
+                                <p class="about-skill-tech">Figma, Canva, Blender</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Game Development -->
+                        <div class="about-skill-item">
+                            <div class="about-skill-icon about-skill-icon-game">
+                                <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#231F20" d="M64 4C30 4 4 30 4 64s26 60 60 60 60-26 60-60S98 4 64 4zm0 110c-27.6 0-50-22.4-50-50S36.4 14 64 14s50 22.4 50 50-22.4 50-50 50z"/>
+                                    <path fill="#FFFFFF" d="M40 48c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V56c0-4.4-3.6-8-8-8H40zm48 24H40V56h48v16z"/>
+                                    <circle cx="52" cy="64" r="4" fill="#FFFFFF"/>
+                                    <circle cx="76" cy="64" r="4" fill="#FFFFFF"/>
+                                    <rect x="56" y="60" width="16" height="8" rx="2" fill="#FFFFFF"/>
+                                    <circle cx="64" cy="52" r="3" fill="#FFFFFF"/>
+                                    <circle cx="64" cy="76" r="3" fill="#FFFFFF"/>
+                                </svg>
+                            </div>
+                            <div class="about-skill-content">
+                                <h4 class="about-skill-title">Game Development</h4>
+                                <p class="about-skill-tech">Unreal Engine, Godot Engine, Unity</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <a href="#" id="resume-download" class="resume-link inline-flex items-center gap-3 group relative">
                     <span class="resume-link-icon">↓</span>
                     <span class="resume-link-text">resume</span>
                     <span class="resume-link-arrow">→</span>
                 </a>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
-        
-        <!-- Decorative Elements -->
-        <div class="about-decoration about-decoration-1"></div>
-        <div class="about-decoration about-decoration-2"></div>
-    </section>
+    </div>
+    
+    <!-- Decorative Elements - Fixed -->
+    <div class="about-decoration about-decoration-1"></div>
+    <div class="about-decoration about-decoration-2"></div>
     
     <script>
         // Open resume in new tab/window without navigating current page

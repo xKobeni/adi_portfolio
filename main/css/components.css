@@ -72,7 +72,7 @@
     visibility: visible;
 }
 
-/* Additional delay classes for project detail page */
+/* Additional delay classes for project detail page and about page */
 .animate-fade-in-delay-4,
 .animate-fade-in-delay-5,
 .animate-fade-in-delay-6,
@@ -83,7 +83,7 @@
 }
 
 .page-loaded .animate-fade-in-delay-4 {
-    animation: fadeInUpDelayed 1s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
+    animation: fadeInUpDelayedMore 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
     visibility: visible;
 }
 
