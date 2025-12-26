@@ -2,61 +2,837 @@
    MEDIA QUERIES / RESPONSIVE STYLES
    ========================================================================== */
 
-/* About Page Responsive */
-@media (max-width: 768px) {
+/* ==========================================================================
+   GLOBAL MOBILE STYLES
+   ========================================================================== */
+
+/* Base mobile styles - apply to all screen sizes below 768px */
+@media (max-width: 767px) {
+    /* Ensure body doesn't overflow on mobile */
+    html {
+        height: 100%;
+        overflow-x: hidden;
+        background: radial-gradient(circle at center, rgba(30, 35, 50, 1) 0%, rgba(15, 18, 25, 1) 50%, rgba(5, 8, 12, 1) 100%) !important;
+    }
+    
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        min-height: 100vh;
+        min-height: -webkit-fill-available; /* iOS fix */
+        background: radial-gradient(circle at center, rgba(30, 35, 50, 1) 0%, rgba(15, 18, 25, 1) 50%, rgba(5, 8, 12, 1) 100%) !important;
+    }
+    
+    /* Disable custom cursor on mobile */
+    .cursor,
+    .cursor-follower,
+    .cursor-dot {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+    
+    /* Ensure all containers respect viewport width */
+    * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Make all images responsive */
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    /* Prevent horizontal scrolling */
+    html, body {
+        overflow-x: hidden;
+        position: relative;
+    }
+    
+    /* Fix black bottom gap - ensure background covers all content */
+    .background-container,
+    .grain {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        height: -webkit-fill-available; /* iOS fix */
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        max-width: 100vw;
+        overflow: hidden;
+        z-index: -1;
+    }
+    
+    /* Ensure scroll containers have proper background */
+    .projects-scroll-container,
+    .project-detail-scroll-container {
+        background: transparent;
+    }
+    
+    /* Fix sections to fill viewport properly */
+    section {
+        min-height: auto;
+    }
+    
+    /* Ensure content extends to bottom - prevent black gap */
+    .projects-scroll-container .max-w-7xl,
+    .project-detail-scroll-container .max-w-5xl {
+        min-height: calc(100vh - 80px);
+        padding-bottom: 2rem;
+    }
+    
+    /* Fix for iOS Safari viewport height */
+    @supports (-webkit-touch-callout: none) {
+        html {
+            height: -webkit-fill-available;
+        }
+        
+        body {
+            min-height: -webkit-fill-available;
+        }
+        
+        .background-container,
+        .grain {
+            min-height: -webkit-fill-available;
+        }
+    }
+}
+
+/* ==========================================================================
+   NAVIGATION - MOBILE RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    /* Navigation bar mobile adjustments */
+    nav {
+        padding: 1rem 1.25rem !important;
+        padding-top: 1.5rem !important;
+        padding-bottom: 1rem !important;
+    }
+    
+    /* Logo size on mobile */
+    .logo-text {
+        font-size: 1.25rem !important;
+        padding: 0.3rem 0.6rem !important;
+    }
+    
+    /* Nav items spacing on mobile */
+    .nav-right {
+        gap: 1rem !important;
+    }
+    
+    /* Burger menu size on mobile */
+    .burger-grid {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    .burger-grid span {
+        width: 3px !important;
+        height: 3px !important;
+    }
+    
+    /* Navigation overlay mobile adjustments */
+    .nav-overlay-content {
+        padding: 4rem 2rem !important;
+        padding-top: 6rem !important;
+    }
+    
+    .nav-overlay-link {
+        font-size: clamp(1.5rem, 6vw, 2rem) !important;
+        gap: 0.75rem !important;
+    }
+    
+    .nav-number {
+        min-width: 2rem !important;
+        font-size: 0.5em !important;
+    }
+    
+    .nav-overlay-social {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+}
+
+/* ==========================================================================
+   HOME PAGE - MOBILE RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    /* Home section mobile adjustments */
+    #home {
+        padding: 3rem 1.5rem 4rem !important;
+        min-height: calc(100vh - 80px) !important;
+        min-height: calc(100dvh - 80px) !important; /* Dynamic viewport height */
+        justify-content: center !important;
+    }
+    
+    /* Main heading mobile */
+    .main-heading {
+        font-size: clamp(1.75rem, 9vw, 2.75rem) !important;
+        gap: 0.5rem !important;
+        margin-bottom: 1.5rem !important;
+        text-align: center !important;
+        line-height: 1.15 !important;
+    }
+    
+    .heading-line {
+        display: block !important;
+    }
+    
+    .hollow-text {
+        font-size: 0.7em !important;
+        margin-right: 0.25rem !important;
+    }
+    
+    /* Subtitle mobile */
+    .subtitle-text {
+        font-size: clamp(1rem, 3.5vw, 1.125rem) !important;
+        margin-bottom: 2.5rem !important;
+        line-height: 1.6 !important;
+        text-align: center !important;
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+    
+    /* CTA links mobile */
+    .cta-links {
+        flex-direction: column !important;
+        gap: 1.25rem !important;
+        margin-top: 2rem !important;
+        width: 100% !important;
+        max-width: 280px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    .cta-link {
+        font-size: clamp(0.9375rem, 3.5vw, 1.0625rem) !important;
+        padding: 0.75rem 0 !important;
+        width: 100% !important;
+        justify-content: center !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+}
+
+/* ==========================================================================
+   ABOUT PAGE - MOBILE RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    /* About section mobile */
+    #about {
+        padding: 3rem 1.5rem 4rem !important;
+        min-height: calc(100vh - 80px) !important;
+        min-height: calc(100dvh - 80px) !important; /* Dynamic viewport height */
+        padding-top: 5rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    /* About content mobile layout */
     .about-content {
-        padding-left: 4%;
-        padding-right: 4%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        text-align: center !important;
+        width: 100% !important;
     }
     
+    /* Portrait container mobile */
+    .about-portrait-container {
+        margin-bottom: 2.5rem !important;
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+    
+    .about-portrait-image {
+        width: 220px !important;
+        height: 220px !important;
+    }
+    
+    /* About title mobile */
+    .about-title {
+        font-size: clamp(2.25rem, 10vw, 3.25rem) !important;
+        text-align: center !important;
+        margin-bottom: 1.25rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    .about-title-accent {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 60px !important;
+    }
+    
+    /* About separator mobile */
     .about-separator {
-        max-width: 200px;
+        max-width: 250px !important;
+        margin: 0.75rem auto 2.5rem auto !important;
+        height: 1px !important;
+    }
+    
+    /* About text mobile */
+    .about-text {
+        font-size: clamp(1rem, 3.5vw, 1.125rem) !important;
+        text-align: center !important;
+        margin-bottom: 2.5rem !important;
+        line-height: 1.75 !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        max-width: 100% !important;
+    }
+    
+    /* Resume link mobile */
+    .resume-link {
+        font-size: clamp(0.9375rem, 3.5vw, 1.0625rem) !important;
+        padding: 0.75rem 1.75rem !important;
+        margin: 0 auto !important;
+        display: inline-flex !important;
+    }
+    
+    /* Decorative elements - hide or reduce on mobile */
+    .about-decoration {
+        display: none !important;
     }
 }
 
-/* Contact Page Responsive */
-@media (min-width: 768px) {
-    .contact-link-indented {
-        margin-left: calc(8.2rem + 0.75rem + 1em + 0.5rem);
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #about {
+        padding: 3rem 2rem !important;
+        padding-top: 6rem !important;
+    }
+    
+    .about-portrait-image {
+        width: 240px !important;
+        height: 240px !important;
     }
 }
 
-@media (min-width: 1024px) {
-    .contact-link-indented {
-        margin-left: calc(8.5rem + 0.75rem + 1em + 0.5rem);
-    }
-}
+/* ==========================================================================
+   CONTACT PAGE - MOBILE RESPONSIVE
+   ========================================================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+    /* Contact section mobile */
+    #contact {
+        padding: 3rem 1.5rem 4rem !important;
+        min-height: calc(100vh - 80px) !important;
+        min-height: calc(100dvh - 80px) !important; /* Dynamic viewport height */
+        padding-top: 5rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    /* Contact content mobile */
     .contact-content {
-        text-align: center;
+        text-align: center !important;
+        padding: 0 !important;
+        margin-top: 0 !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
     }
     
+    /* Contact title mobile */
     .contact-title {
-        text-align: center;
+        text-align: center !important;
+        font-size: clamp(2rem, 9vw, 3rem) !important;
+        margin-bottom: 1.5rem !important;
+        line-height: 1.1 !important;
+        letter-spacing: 0.02em !important;
     }
     
+    /* Contact separator mobile */
     .contact-separator {
-        max-width: 200px;
-        margin-left: auto;
-        margin-right: auto;
+        max-width: 250px !important;
+        margin: 0.75rem auto 3rem auto !important;
+        height: 1px !important;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 100%) !important;
+    }
+    
+    /* Contact grid mobile */
+    .contact-grid {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* Contact divider mobile */
+    .contact-divider {
+        display: none !important;
+    }
+    
+    /* Contact section mobile */
+    .contact-section {
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    .contact-mail-section {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: center !important;
+    }
+    
+    /* Contact label mobile */
+    .contact-label {
+        font-size: clamp(0.75rem, 2.5vw, 0.875rem) !important;
+        margin-bottom: 0.75rem !important;
+        letter-spacing: 0.1em !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+    }
+    
+    /* Contact link mobile */
+    .contact-link {
+        font-size: clamp(1rem, 3.5vw, 1.125rem) !important;
+        justify-content: center !important;
+        color: rgba(255, 255, 255, 0.95) !important;
+        gap: 0.5rem !important;
+        padding: 0.5rem 0 !important;
+    }
+    
+    /* Contact link row mobile */
+    .contact-link-row {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.75rem !important;
+        margin-bottom: 2rem !important;
+        width: 100% !important;
+    }
+    
+    .contact-link-indented {
+        margin-left: 0 !important;
+    }
+    
+    /* Social icon mobile */
+    .contact-social-icon {
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+        min-width: 1.5rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* Social wrapper mobile */
+    .contact-social-wrapper {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0 !important;
+    }
+}
+
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .contact-content {
+        padding: 0 2rem !important;
     }
     
     .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 4rem !important;
+    }
+}
+
+/* ==========================================================================
+   PROJECTS PAGE - MOBILE RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    /* Projects scroll container mobile */
+    .projects-scroll-container {
+        top: 80px !important;
+        padding: 0 !important;
+        background: transparent !important;
     }
     
-    .contact-divider {
-        width: 100%;
-        height: 1px;
-        min-height: 1px;
-        margin: 1rem 0;
+    /* Projects section mobile */
+    .projects-section {
+        padding: 2rem 1.25rem 4rem !important;
+        min-height: calc(100vh - 80px) !important;
     }
     
-    .contact-section {
+    /* Projects page header mobile */
+    .projects-page-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1.75rem !important;
+        margin-bottom: 3rem !important;
+        padding-bottom: 2rem !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    /* Projects page title mobile */
+    .projects-page-title {
+        font-size: clamp(2.25rem, 10vw, 3.25rem) !important;
+        margin-bottom: 0.75rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    /* Projects page subtitle mobile */
+    .projects-page-subtitle {
+        font-size: clamp(0.9375rem, 3.5vw, 1.0625rem) !important;
+        line-height: 1.5 !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+    
+    /* Projects count badge mobile */
+    .projects-count-badge {
+        min-width: 64px !important;
+        height: 64px !important;
+        border-radius: 14px !important;
+    }
+    
+    .projects-count-badge .work-count {
+        font-size: 1.625rem !important;
+    }
+    
+    /* Projects grid container mobile */
+    .projects-grid-container {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    /* Project card mobile */
+    .project-card {
+        border-radius: 18px !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+        backdrop-filter: blur(10px) !important;
+    }
+    
+    /* Project card image wrapper mobile */
+    .project-card-image-wrapper {
+        height: 220px !important;
+    }
+    
+    /* Project card content mobile */
+    .project-card-content {
+        padding: 1.75rem !important;
+    }
+    
+    /* Project card title mobile */
+    .project-card-title {
+        font-size: clamp(1.375rem, 5.5vw, 1.625rem) !important;
+        margin-bottom: 0.75rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    /* Project card description mobile */
+    .project-card-description {
+        font-size: clamp(0.9375rem, 3vw, 1rem) !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1.25rem !important;
+        color: rgba(255, 255, 255, 0.75) !important;
+    }
+    
+    /* Project card category mobile */
+    .project-card-category {
+        font-size: 0.75rem !important;
+        margin-bottom: 0.625rem !important;
+        letter-spacing: 0.1em !important;
+    }
+}
+
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .projects-scroll-container {
+        top: 100px !important;
+    }
+    
+    .projects-section {
+        padding: 2rem 1.5rem 4rem !important;
+    }
+    
+    .projects-grid-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+    }
+}
+
+/* ==========================================================================
+   PROJECT DETAIL PAGE - MOBILE RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    /* Project detail scroll container mobile */
+    .project-detail-scroll-container {
+        top: 80px !important;
+        padding-top: 0 !important;
+        background: transparent !important;
+    }
+    
+    /* Project detail section mobile */
+    #project-detail {
+        padding: 2rem 1.25rem 4rem !important;
+        min-height: calc(100vh - 80px) !important;
+    }
+    
+    /* Project header mobile */
+    .project-header {
+        margin-bottom: 3rem !important;
+    }
+    
+    .project-header-content {
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    /* Project detail category mobile */
+    .project-detail-category {
+        font-size: 0.75rem !important;
+        padding: 0.5rem 1rem !important;
+        margin-bottom: 1rem !important;
+        border-radius: 8px !important;
+    }
+    
+    /* Project detail title mobile */
+    .project-detail-title {
+        font-size: clamp(2rem, 9vw, 3rem) !important;
+        margin-bottom: 1.25rem !important;
+        text-align: center !important;
+        line-height: 1.15 !important;
+    }
+    
+    /* Project detail description mobile */
+    .project-detail-description {
+        font-size: clamp(1rem, 3.5vw, 1.125rem) !important;
+        line-height: 1.75 !important;
+        margin-bottom: 2rem !important;
+        text-align: center !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+    
+    /* Project detail URL mobile */
+    .project-detail-url {
+        font-size: clamp(0.9375rem, 3.5vw, 1.0625rem) !important;
+        padding: 0.75rem 1.75rem !important;
+        margin: 0 auto !important;
+        display: inline-flex !important;
+    }
+    
+    /* Project detail image container mobile */
+    .project-detail-image-container {
+        margin-bottom: 3.5rem !important;
+    }
+    
+    .project-detail-image {
+        max-width: 100% !important;
+        border-radius: 12px !important;
+    }
+    
+    /* Project additional content mobile */
+    .project-additional-content {
+        margin-top: 2.5rem !important;
+    }
+    
+    .project-additional-section {
+        margin-bottom: 3.5rem !important;
+    }
+    
+    .project-additional-text {
+        font-size: clamp(1rem, 3.5vw, 1.125rem) !important;
+        line-height: 1.75 !important;
+        text-align: center !important;
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+    
+    .project-additional-text h1 {
+        font-size: clamp(1.75rem, 7vw, 2.25rem) !important;
+        margin-top: 2.5rem !important;
+        margin-bottom: 1.25rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .project-additional-text h2 {
+        font-size: clamp(1.5rem, 6vw, 2rem) !important;
+        margin-top: 2rem !important;
+        margin-bottom: 1rem !important;
+        line-height: 1.25 !important;
+    }
+    
+    .project-additional-text h3 {
+        font-size: clamp(1.25rem, 5vw, 1.625rem) !important;
+        margin-top: 1.75rem !important;
+        margin-bottom: 0.875rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    /* Project additional image mobile */
+    .project-additional-image {
+        max-width: 100% !important;
+        margin-bottom: 2.5rem !important;
+        border-radius: 12px !important;
+    }
+    
+    /* Project images grid mobile */
+    .project-images-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        margin-bottom: 2.5rem !important;
+    }
+    
+    /* Next project navigation mobile */
+    .project-next-navigation {
+        padding-top: 2.5rem !important;
+        margin-top: 2.5rem !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    .next-project-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1.25rem !important;
+    }
+    
+    .next-project-label {
+        font-size: 1rem !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+    }
+    
+    .next-project-title {
+        font-size: clamp(1.375rem, 5.5vw, 1.875rem) !important;
+        line-height: 1.2 !important;
+    }
+    
+    .next-project-category {
+        font-size: 0.9375rem !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+    
+    .next-project-link {
+        align-items: flex-start !important;
+        margin-left: 0 !important;
+    }
+}
+
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .project-detail-scroll-container {
+        top: 100px !important;
+    }
+    
+    #project-detail {
+        padding: 2rem 1.5rem 4rem !important;
+    }
+    
+    .project-detail-title {
+        font-size: clamp(2.5rem, 6vw, 3.5rem) !important;
+    }
+    
+    .project-detail-image {
+        max-width: 90% !important;
+    }
+}
+
+/* ==========================================================================
+   TOUCH TARGETS - MOBILE OPTIMIZATION
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    /* Ensure touch targets are at least 44x44px for mobile */
+    a, button, .nav-item, .cta-link, .contact-link, .project-card, 
+    .resume-link, .project-detail-url, .next-project-link {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
         align-items: center;
-        text-align: center;
+        justify-content: center;
+    }
+    
+    /* Improve tap highlight */
+    a, button {
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+        tap-highlight-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* ==========================================================================
+   LANDSCAPE ORIENTATION - MOBILE
+   ========================================================================== */
+
+@media (max-width: 767px) and (orientation: landscape) {
+    /* Reduce vertical spacing in landscape */
+    #home, #about, #contact {
+        padding-top: 4rem !important;
+        padding-bottom: 2rem !important;
+        min-height: auto !important;
+    }
+    
+    .projects-scroll-container,
+    .project-detail-scroll-container {
+        top: 70px !important;
+    }
+    
+    nav {
+        padding-top: 1rem !important;
+        padding-bottom: 0.75rem !important;
+    }
+}
+
+/* ==========================================================================
+   SMALL MOBILE DEVICES (320px - 480px)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+    /* Extra small adjustments */
+    nav {
+        padding: 0.75rem 1rem !important;
+        padding-top: 1.25rem !important;
+    }
+    
+    .logo-text {
+        font-size: 1.1rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+    
+    #home, #about, #contact {
+        padding: 1.5rem 1rem !important;
+        padding-top: 5rem !important;
+    }
+    
+    .projects-section,
+    #project-detail {
+        padding: 1.25rem 0.75rem 2.5rem !important;
+    }
+    
+    .main-heading {
+        font-size: clamp(1.25rem, 9vw, 2rem) !important;
+    }
+    
+    .projects-page-title {
+        font-size: clamp(1.75rem, 10vw, 2.5rem) !important;
+    }
+    
+    .about-title,
+    .contact-title {
+        font-size: clamp(1.5rem, 9vw, 2.25rem) !important;
+    }
+}
+
+/* ==========================================================================
+   LARGE MOBILE / TABLET PORTRAIT (481px - 767px)
+   ========================================================================== */
+
+@media (min-width: 481px) and (max-width: 767px) {
+    /* Slightly more breathing room */
+    #home, #about, #contact {
+        padding: 2rem 1.5rem !important;
+    }
+    
+    .projects-section,
+    #project-detail {
+        padding: 1.75rem 1.25rem 3rem !important;
     }
 }
 

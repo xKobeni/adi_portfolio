@@ -533,3 +533,82 @@ body.nav-overlay-open .burger-menu-btn .burger-grid span:nth-child(5)::after {
     width: 100%;
 }
 
+/* ==========================================================================
+   NAVIGATION - MOBILE RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    /* Navigation bar mobile padding */
+    nav {
+        padding: 1rem 1.25rem !important;
+        padding-top: 1.5rem !important;
+        padding-bottom: 1rem !important;
+    }
+    
+    /* Logo mobile adjustments */
+    .logo-text {
+        font-size: 1.25rem !important;
+        padding: 0.3rem 0.6rem !important;
+    }
+    
+    /* Nav items mobile spacing */
+    .nav-right {
+        gap: 1rem !important;
+    }
+    
+    /* Burger menu mobile size */
+    .burger-grid {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    .burger-grid span {
+        width: 3px !important;
+        height: 3px !important;
+    }
+    
+    /* Navigation overlay mobile */
+    .nav-overlay-content {
+        padding: 4rem 2rem !important;
+        padding-top: 6rem !important;
+        padding-bottom: 4rem !important;
+    }
+    
+    .nav-overlay-link {
+        font-size: clamp(1.5rem, 6vw, 2rem) !important;
+        gap: 0.75rem !important;
+    }
+    
+    .nav-number {
+        min-width: 2rem !important;
+        font-size: 0.5em !important;
+    }
+    
+    .nav-overlay-social {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+    
+    .social-link {
+        font-size: clamp(0.875rem, 3vw, 1rem) !important;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    nav {
+        padding: 0.75rem 1rem !important;
+        padding-top: 1.25rem !important;
+    }
+    
+    .logo-text {
+        font-size: 1.1rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+    
+    .nav-overlay-content {
+        padding: 3rem 1.5rem !important;
+        padding-top: 5rem !important;
+    }
+}
+

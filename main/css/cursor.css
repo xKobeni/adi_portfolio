@@ -52,3 +52,17 @@
     display: none !important;
 }
 
+/* Hide cursor on mobile/touch devices */
+@media (max-width: 767px),
+       (pointer: coarse),
+       (hover: none) {
+    .cursor-follower,
+    .cursor-dot,
+    .cursor {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+}
+

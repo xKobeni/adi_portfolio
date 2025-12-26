@@ -2,6 +2,21 @@
 (function() {
     'use strict';
     
+    // Detect if device is mobile/touch device
+    const isMobileDevice = () => {
+        return (
+            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+            (navigator.maxTouchPoints && navigator.maxTouchPoints > 2) ||
+            window.matchMedia('(pointer: coarse)').matches ||
+            window.matchMedia('(hover: none)').matches
+        );
+    };
+    
+    // Don't initialize cursor on mobile devices
+    if (isMobileDevice()) {
+        return;
+    }
+    
     // Create cursor follower element (outer circle)
     const cursorFollower = document.createElement('div');
     cursorFollower.className = 'cursor-follower';

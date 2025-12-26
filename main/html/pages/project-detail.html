@@ -18,6 +18,9 @@
             margin: 0;
             padding: 0;
             height: 100vh;
+            height: -webkit-fill-available;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
             overflow: hidden;
             position: relative;
         }
@@ -41,6 +44,9 @@
             left: 0;
             width: 100%;
             height: 100vh;
+            height: -webkit-fill-available;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
             z-index: 0;
             pointer-events: none;
         }
@@ -50,6 +56,9 @@
             left: 0;
             width: 100%;
             height: 100vh;
+            height: -webkit-fill-available;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
             z-index: 1;
             pointer-events: none;
         }
@@ -65,7 +74,7 @@
         /* Scrollable content container - starts below navbar */
         .project-detail-scroll-container {
             position: fixed;
-            top: 120px; /* Start below navbar */
+            top: 80px; /* Start below navbar on mobile */
             left: 0;
             right: 0;
             bottom: 0;
@@ -76,6 +85,12 @@
             scrollbar-width: thin;
             scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
             pointer-events: auto;
+        }
+        
+        @media (min-width: 768px) {
+            .project-detail-scroll-container {
+                top: 120px; /* Start below navbar on desktop */
+            }
         }
         
         /* Ensure all interactive elements are clickable */
@@ -139,8 +154,15 @@
         }
         /* Container padding */
         .project-detail-scroll-container .max-w-5xl {
-            padding-left: 4%;
-            padding-right: 4%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .project-detail-scroll-container .max-w-5xl {
+                padding-left: 4%;
+                padding-right: 4%;
+            }
         }
         /* Ensure content section has proper spacing */
         #project-detail {
@@ -218,7 +240,7 @@
         <div class="max-w-5xl mx-auto">
 
             <!-- Project Detail Section -->
-            <section id="project-detail" class="min-h-screen pb-16 pt-8">
+            <section id="project-detail" class="min-h-screen pb-12 sm:pb-16 pt-4 sm:pt-8">
                 <div class="w-full max-w-6xl mx-auto">
                 
                 <!-- Project Header -->
